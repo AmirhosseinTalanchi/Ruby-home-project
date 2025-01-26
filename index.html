@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruby Home</title>
+    <link rel="stylesheet" href="styles/swiper-bundle.min.css">
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/font.css">
+    <link rel="stylesheet" href="styles/app.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+   
+</head>
+<body>
+
+    <svg class="project-svg">
+        <symbol id="arrow-down" width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path opacity="0.7" d="M1 1L6 6L11 0.999999" stroke="#030A1B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>  
+        <symbol id="Search-icon" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5.73047 10.7532C8.34303 10.7532 10.4609 8.5699 10.4609 5.87662C10.4609 3.18334 8.34303 1 5.73047 1C3.1179 1 1 3.18334 1 5.87662C1 8.5699 3.1179 10.7532 5.73047 10.7532Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M13.0367 13.2581L8.89764 9.60059" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>            
+    </svg>
+
+    <!-- App Header -->
+    <header>
+        <div class="container">
+            <div class="header">
+                <div class="header__logo-wrapper">
+                    <svg class="header__icon" width="250" height="65" viewBox="0 0 250 65" fill="currentcolor" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <rect width="250" height="65" fill="url(#pattern0_1_21)"/>
+                        <defs>
+                        <pattern id="pattern0_1_21" patternContentUnits="objectBoundingBox" width="1" height="1">
+                        <use xlink:href="#image0_1_21" transform="scale(0.004 0.0153846)"/>
+                        </pattern>
+                        <image id="image0_1_21" width="250" height="65" xlink:href="data:image/png;base64,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"/>
+                        </defs>
+                    </svg>
+                </div>
+                <ul class="header__menu">
+                    <li class="headeer__menu-iteams"><a href="#">Home</a></li>
+                    <li class="headeer__menu-iteams"><a href="#">Properties</a></li>
+                    <li class="headeer__menu-iteams"><a href="#">About us</a></li>
+                    <li class="headeer__menu-iteams"><a href="#">Blog</a></li>
+                    <a class="header__btn" href="login-page.html">Contact us</a>
+                </ul>
+                <div class="line-wrapper">
+                    <div class="line"></div>
+                </div>       
+            </div>
+        </div>
+    </header>
+    <!-- App Main -->
+    <main>
+        <!--//// section main top ////-->
+        <section>
+            <div class="container">
+                <div class="main-top">
+                    <div class="main-top__left">
+                        <h1 class="main-top__title">Find the perfect place to stay with your family</h1>
+                        <p class="main-top__caption">Buying a home is a life-changing experience, so shouldn’t your real estate agent be a life changer.</p>
+                        <div class="filter__contents">
+                            <div class="filter__content with-border">
+                                   <div class="filter__content-title">
+                                        Location
+                                        <svg class="arrow-down">
+                                            <use href="#arrow-down"></use>
+                                        </svg>
+                                   </div>
+                                   <span class="filter__content-text">
+                                         Dhaka
+                                   </span>
+                            </div>
+                            <div class="filter__content with-border">
+                                    <div class="filter__content-title">
+                                        Property type
+                                        <svg>
+                                            <use href="#arrow-down"></use>
+                                        </svg>
+                                   </div>
+                                   <span class="filter__content-text">
+                                    Duplex
+                                   </span>
+                            </div>
+                            <div class="filter__content">
+                                    <div class="filter__content-title">
+                                        Price
+                                        <svg>
+                                            <use href="#arrow-down"></use>
+                                        </svg>
+                                   </div>
+                                   <span class="filter__content-text">
+                                    $4000-$8000
+                                   </span>
+                            </div>
+                            <a href="#" class="filter__btn">
+                                    <svg>
+                                        <use href="#Search-icon"></use>
+                                    </svg>
+                                    <span class="filter__btn-text">Search</span>
+                            </a>
+                        </div>         
+                    </div>
+                    <div class="main-top__right">
+                        <img class="main-top__img" src="images/Rectangle 1.jpg" alt="img">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--//// section Our Partners ////-->
+        <section>
+            <div class="container">
+                <div class="Our-Partners">
+                    <h2 class="section-title">
+                        Our Partners
+                    </h2>
+                    <div class="Our-Partners__icons-wrapper">
+                        <div class="Our-Partners__icon">
+                            <img src="images/bioteach.png" alt="">
+                        </div>
+                        <div class="Our-Partners__icon">
+                            <img src="images/express.png" alt="">
+                        </div>
+                        <div class="Our-Partners__icon">
+                            <img src="images/smilehome.png" alt="">
+                        </div>
+                        <div class="Our-Partners__icon">
+                            <img src="images/coonnect.png" alt="">
+                        </div>
+                        <div class="Our-Partners__icon">
+                            <img src="images/homebuld.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--//// section Popular Properties ////-->
+        <section>
+            <div class="container">
+                <div class="Popular-Properties">
+                    <div class="Popular-Properties__header">
+                        <h2 class="section-title">
+                            Popular Properties
+                        </h2>
+                        <span class="Popular-Properties__header-text">
+                            VIEW ALL
+                        </span>
+                    </div>
+                    <div class="Popular-Properties__contents">
+                        <div class="content-box">
+                            <img class="content-box__img" src="images/home1.png" alt="home1">
+                            <div class="content-box__value">
+                                <div class="content-box__header">
+                                    <h3 class="content-box__title">Capital hill residence</h3>
+                                    <svg class="content-box__heart" width="16" height="14" viewBox="0 0 16 14" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M8 14C7.88969 14 7.77981 13.9617 7.69147 13.8847C7.00941 13.2909 6.36075 12.7404 5.75056 12.2227C2.30678 9.30098 0 7.3705 0 4.55821C0 1.95963 1.84491 0 4.25 0C6.14559 0 7.36234 1.31843 8 2.5056C8.63766 1.31843 9.85441 0 11.75 0C14.1551 0 16 1.95963 16 4.55821C16 7.37053 13.6932 9.30098 10.2494 12.2227C9.63925 12.7404 8.99059 13.2909 8.30853 13.8847C8.22019 13.9617 8.11031 14 8 14Z"/>
+                                    </svg>            
+                                </div>
+                                <div class="content-box__loction">
+                                    <svg width="11" height="15" viewBox="0 0 11 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g opacity="0.7">
+                                        <path d="M10.4672 3.16023C10.0669 2.27357 9.43292 1.51251 8.63319 0.958568C7.83346 0.404625 6.8981 0.0786712 5.9273 0.0156189C5.64307 -0.0052063 5.3577 -0.0052063 5.07347 0.0156189C4.10267 0.0786712 3.16731 0.404625 2.36758 0.958568C1.56785 1.51251 0.933873 2.27357 0.533559 3.16023C0.103591 4.08409 -0.0714897 5.10611 0.0264605 6.1204C0.124411 7.13469 0.491828 8.10433 1.09063 8.92883L5.07867 14.3642C5.12729 14.4304 5.19079 14.4842 5.26405 14.5213C5.33731 14.5584 5.41827 14.5777 5.50038 14.5777C5.5825 14.5777 5.66346 14.5584 5.73672 14.5213C5.80998 14.4842 5.87348 14.4304 5.9221 14.3642L9.91013 8.92883C10.5089 8.10433 10.8764 7.13469 10.9743 6.1204C11.0723 5.10611 10.8972 4.08409 10.4672 3.16023ZM5.50038 7.15103C5.16724 7.15103 4.84158 7.05224 4.56458 6.86716C4.28758 6.68208 4.07169 6.41901 3.9442 6.11122C3.81671 5.80344 3.78336 5.46476 3.84835 5.13802C3.91334 4.81128 4.07377 4.51115 4.30933 4.27558C4.5449 4.04001 4.84503 3.87959 5.17177 3.8146C5.49852 3.74961 5.83719 3.78296 6.14498 3.91045C6.45276 4.03794 6.71583 4.25383 6.90091 4.53083C7.086 4.80783 7.18478 5.13349 7.18478 5.46663C7.18491 5.68787 7.14144 5.90696 7.05683 6.11138C6.97223 6.3158 6.84816 6.50154 6.69173 6.65797C6.53529 6.81441 6.34955 6.93848 6.14513 7.02308C5.94071 7.10768 5.72162 7.15116 5.50038 7.15103Z" fill="#030A1B"/>
+                                        </g>
+                                    </svg>
+                                    <span class="content-box__loction-text">
+                                        East London
+                                    </span>
+                                </div>
+                                <div class="content-box__aptions">
+                                    <div class="content-box__aption">
+                                        <svg width="17" height="13" viewBox="0 0 17 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g opacity="0.7">
+                                            <path d="M15.0787 5.11829H1.26238C0.56632 5.11829 0 5.68461 0 6.3807V9.75337H16.3411V6.3807C16.3411 5.68461 15.7748 5.11829 15.0787 5.11829Z" fill="#030A1B"/>
+                                            <path d="M8.64929 2.15329H12.6982V4.16094H8.64929V2.15329Z" fill="#030A1B"/>
+                                            <path d="M2.68531 1.1959H8.17045H13.6556V4.16104H14.8515V0H1.48944V4.16104H2.68531V1.1959Z" fill="#030A1B"/>
+                                            <path d="M3.6427 2.15329H7.69162V4.16094H3.6427V2.15329Z" fill="#030A1B"/>
+                                            <path d="M0.510681 10.7111H15.8299V12.185H0.510681V10.7111Z" fill="#030A1B"/>
+                                            </g>
+                                        </svg>
+                                        <span>6</span>
+                                    </div>
+                                    <div class="content-box__aption">
+                                        <svg width="13" height="15" viewBox="0 0 13 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g opacity="0.7">
+                                            <path d="M3.91737 5.51658L5.21188 7.5253L6.11952 6.48374L4.76549 4.89164C5.34579 4.04352 5.197 2.64486 4.334 1.49915C3.3222 0.145125 1.70034 -0.375655 0.718303 0.353435C-0.263736 1.08252 -0.233974 2.77878 0.777824 4.1328C1.65571 5.29339 2.95021 5.82905 3.91737 5.51658Z" fill="#030A1B"/>
+                                            <path d="M7.77171 8.43262L6.78967 9.9652L9.17037 13.6404C9.5126 14.1761 10.2417 14.31 10.7625 13.9231L10.8517 13.8487C11.3576 13.4618 11.4469 12.7328 11.0303 12.2417L7.77171 8.43262Z" fill="#030A1B"/>
+                                            <path d="M12.9209 1.60347C12.7869 1.43979 12.534 1.45467 12.415 1.61834C12.415 1.61834 10.7187 3.79073 10.2426 4.40079C10.1682 4.49006 10.0343 4.50494 9.94498 4.44542C9.8557 4.37103 9.82595 4.25199 9.90034 4.14784L11.9388 1.27612C12.0281 1.15708 12.0281 0.978533 11.9239 0.859498C11.79 0.695825 11.5371 0.710701 11.418 0.874374C11.418 0.874374 9.7218 3.04676 9.24566 3.65682C9.17126 3.74609 9.03734 3.76097 8.94807 3.70145C8.85879 3.62706 8.82903 3.50802 8.90342 3.40387C9.36468 2.76405 10.9568 0.517274 10.9568 0.517274C11.0758 0.353601 11.0163 0.115524 10.8229 0.0262475C10.689 -0.03327 10.5253 0.01137 10.4211 0.130405L8.1297 3.07652L7.83212 3.46339C7.53453 3.86513 7.40061 4.34127 7.46013 4.7579L7.59404 5.6209L1.89524 12.2273C1.47862 12.7184 1.5679 13.4474 2.0738 13.8343L2.16307 13.9087C2.66897 14.2956 3.39806 14.1617 3.75516 13.626L8.45704 6.29047L9.33493 6.17144C9.75155 6.11192 10.1682 5.84409 10.4806 5.44234L10.7782 5.05548L12.9357 2.02009C13.025 1.90105 13.025 1.7225 12.9209 1.60347Z" fill="#030A1B"/>
+                                            </g>
+                                        </svg>    
+                                        <span>2</span>
+                                    </div>
+                                    <div class="content-box__aption">
+                                        <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3.31579 0C2.09753 0 1.10526 0.992267 1.10526 2.21053V7.92105H1.84211V2.21053C1.84211 1.38773 2.493 0.736842 3.31579 0.736842C4.01002 0.736842 4.58167 1.20307 4.74342 1.84211H5.49178C5.31481 0.799459 4.4078 0 3.31579 0ZM5.15789 2.21053C4.34147 2.21053 3.68421 2.86779 3.68421 3.68421H6.63158C6.63158 2.86779 5.97432 2.21053 5.15789 2.21053ZM4.05263 4.42105C3.84915 4.42105 3.68421 4.586 3.68421 4.78947V5.1579C3.68421 5.36137 3.84915 5.52632 4.05263 5.52632C4.25611 5.52632 4.42105 5.36137 4.42105 5.1579V4.78947C4.42105 4.586 4.25611 4.42105 4.05263 4.42105ZM6.26316 4.42105C6.05968 4.42105 5.89474 4.586 5.89474 4.78947V5.1579C5.89474 5.36137 6.05968 5.52632 6.26316 5.52632C6.46664 5.52632 6.63158 5.36137 6.63158 5.1579V4.78947C6.63158 4.586 6.46664 4.42105 6.26316 4.42105ZM5.15789 5.71053C4.95442 5.71053 4.78947 5.87549 4.78947 6.07895V6.44737C4.78947 6.65085 4.95442 6.81579 5.15789 6.81579C5.36137 6.81579 5.52632 6.65085 5.52632 6.44737V6.07895C5.52632 5.87549 5.36137 5.71053 5.15789 5.71053ZM0 8.28947C0 10.8408 2.05395 12.8947 4.60526 12.8947H9.39474C11.9461 12.8947 14 10.8408 14 8.28947H0ZM3.73026 13.2632C3.8731 13.8995 4.37112 14.3684 4.97368 14.3684H9.02632C9.62888 14.3684 10.1269 13.8995 10.2697 13.2632H3.73026Z" fill="#030A1B"/>
+                                        </svg>
+                                        <span>3</span>
+                                    </div>
+                                </div>
+                                <div class="content-box__footer">
+                                    <span class="content-box__price">$5527.00</span>
+                                    <a href="#" class="content-box__btn">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content-box">
+                            <img class="content-box__img" src="images/home2.png" alt="home2">
+                            <div class="content-box__value">
+                                <div class="content-box__header">
+                                    <h3 class="content-box__title">Picket Fence Realty</h3>
+                                    <svg class="content-box__heart" width="16" height="14" viewBox="0 0 16 14" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M8 14C7.88969 14 7.77981 13.9617 7.69147 13.8847C7.00941 13.2909 6.36075 12.7404 5.75056 12.2227C2.30678 9.30098 0 7.3705 0 4.55821C0 1.95963 1.84491 0 4.25 0C6.14559 0 7.36234 1.31843 8 2.5056C8.63766 1.31843 9.85441 0 11.75 0C14.1551 0 16 1.95963 16 4.55821C16 7.37053 13.6932 9.30098 10.2494 12.2227C9.63925 12.7404 8.99059 13.2909 8.30853 13.8847C8.22019 13.9617 8.11031 14 8 14Z"/>
+                                    </svg>                 
+                                </div>
+                                <div class="content-box__loction">
+                                    <svg width="11" height="15" viewBox="0 0 11 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g opacity="0.7">
+                                        <path d="M10.4672 3.16023C10.0669 2.27357 9.43292 1.51251 8.63319 0.958568C7.83346 0.404625 6.8981 0.0786712 5.9273 0.0156189C5.64307 -0.0052063 5.3577 -0.0052063 5.07347 0.0156189C4.10267 0.0786712 3.16731 0.404625 2.36758 0.958568C1.56785 1.51251 0.933873 2.27357 0.533559 3.16023C0.103591 4.08409 -0.0714897 5.10611 0.0264605 6.1204C0.124411 7.13469 0.491828 8.10433 1.09063 8.92883L5.07867 14.3642C5.12729 14.4304 5.19079 14.4842 5.26405 14.5213C5.33731 14.5584 5.41827 14.5777 5.50038 14.5777C5.5825 14.5777 5.66346 14.5584 5.73672 14.5213C5.80998 14.4842 5.87348 14.4304 5.9221 14.3642L9.91013 8.92883C10.5089 8.10433 10.8764 7.13469 10.9743 6.1204C11.0723 5.10611 10.8972 4.08409 10.4672 3.16023ZM5.50038 7.15103C5.16724 7.15103 4.84158 7.05224 4.56458 6.86716C4.28758 6.68208 4.07169 6.41901 3.9442 6.11122C3.81671 5.80344 3.78336 5.46476 3.84835 5.13802C3.91334 4.81128 4.07377 4.51115 4.30933 4.27558C4.5449 4.04001 4.84503 3.87959 5.17177 3.8146C5.49852 3.74961 5.83719 3.78296 6.14498 3.91045C6.45276 4.03794 6.71583 4.25383 6.90091 4.53083C7.086 4.80783 7.18478 5.13349 7.18478 5.46663C7.18491 5.68787 7.14144 5.90696 7.05683 6.11138C6.97223 6.3158 6.84816 6.50154 6.69173 6.65797C6.53529 6.81441 6.34955 6.93848 6.14513 7.02308C5.94071 7.10768 5.72162 7.15116 5.50038 7.15103Z" fill="#030A1B"/>
+                                        </g>
+                                    </svg>
+                                    <span class="content-box__loction-text">
+                                        East London
+                                    </span>
+                                </div>
+                                <div class="content-box__aptions">
+                                    <div class="content-box__aption">
+                                        <svg width="17" height="13" viewBox="0 0 17 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g opacity="0.7">
+                                            <path d="M15.0787 5.11829H1.26238C0.56632 5.11829 0 5.68461 0 6.3807V9.75337H16.3411V6.3807C16.3411 5.68461 15.7748 5.11829 15.0787 5.11829Z" fill="#030A1B"/>
+                                            <path d="M8.64929 2.15329H12.6982V4.16094H8.64929V2.15329Z" fill="#030A1B"/>
+                                            <path d="M2.68531 1.1959H8.17045H13.6556V4.16104H14.8515V0H1.48944V4.16104H2.68531V1.1959Z" fill="#030A1B"/>
+                                            <path d="M3.6427 2.15329H7.69162V4.16094H3.6427V2.15329Z" fill="#030A1B"/>
+                                            <path d="M0.510681 10.7111H15.8299V12.185H0.510681V10.7111Z" fill="#030A1B"/>
+                                            </g>
+                                        </svg>
+                                        <span>6</span>
+                                    </div>
+                                    <div class="content-box__aption">
+                                        <svg width="13" height="15" viewBox="0 0 13 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g opacity="0.7">
+                                            <path d="M3.91737 5.51658L5.21188 7.5253L6.11952 6.48374L4.76549 4.89164C5.34579 4.04352 5.197 2.64486 4.334 1.49915C3.3222 0.145125 1.70034 -0.375655 0.718303 0.353435C-0.263736 1.08252 -0.233974 2.77878 0.777824 4.1328C1.65571 5.29339 2.95021 5.82905 3.91737 5.51658Z" fill="#030A1B"/>
+                                            <path d="M7.77171 8.43262L6.78967 9.9652L9.17037 13.6404C9.5126 14.1761 10.2417 14.31 10.7625 13.9231L10.8517 13.8487C11.3576 13.4618 11.4469 12.7328 11.0303 12.2417L7.77171 8.43262Z" fill="#030A1B"/>
+                                            <path d="M12.9209 1.60347C12.7869 1.43979 12.534 1.45467 12.415 1.61834C12.415 1.61834 10.7187 3.79073 10.2426 4.40079C10.1682 4.49006 10.0343 4.50494 9.94498 4.44542C9.8557 4.37103 9.82595 4.25199 9.90034 4.14784L11.9388 1.27612C12.0281 1.15708 12.0281 0.978533 11.9239 0.859498C11.79 0.695825 11.5371 0.710701 11.418 0.874374C11.418 0.874374 9.7218 3.04676 9.24566 3.65682C9.17126 3.74609 9.03734 3.76097 8.94807 3.70145C8.85879 3.62706 8.82903 3.50802 8.90342 3.40387C9.36468 2.76405 10.9568 0.517274 10.9568 0.517274C11.0758 0.353601 11.0163 0.115524 10.8229 0.0262475C10.689 -0.03327 10.5253 0.01137 10.4211 0.130405L8.1297 3.07652L7.83212 3.46339C7.53453 3.86513 7.40061 4.34127 7.46013 4.7579L7.59404 5.6209L1.89524 12.2273C1.47862 12.7184 1.5679 13.4474 2.0738 13.8343L2.16307 13.9087C2.66897 14.2956 3.39806 14.1617 3.75516 13.626L8.45704 6.29047L9.33493 6.17144C9.75155 6.11192 10.1682 5.84409 10.4806 5.44234L10.7782 5.05548L12.9357 2.02009C13.025 1.90105 13.025 1.7225 12.9209 1.60347Z" fill="#030A1B"/>
+                                            </g>
+                                        </svg>    
+                                        <span>2</span>
+                                    </div>
+                                    <div class="content-box__aption">
+                                        <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3.31579 0C2.09753 0 1.10526 0.992267 1.10526 2.21053V7.92105H1.84211V2.21053C1.84211 1.38773 2.493 0.736842 3.31579 0.736842C4.01002 0.736842 4.58167 1.20307 4.74342 1.84211H5.49178C5.31481 0.799459 4.4078 0 3.31579 0ZM5.15789 2.21053C4.34147 2.21053 3.68421 2.86779 3.68421 3.68421H6.63158C6.63158 2.86779 5.97432 2.21053 5.15789 2.21053ZM4.05263 4.42105C3.84915 4.42105 3.68421 4.586 3.68421 4.78947V5.1579C3.68421 5.36137 3.84915 5.52632 4.05263 5.52632C4.25611 5.52632 4.42105 5.36137 4.42105 5.1579V4.78947C4.42105 4.586 4.25611 4.42105 4.05263 4.42105ZM6.26316 4.42105C6.05968 4.42105 5.89474 4.586 5.89474 4.78947V5.1579C5.89474 5.36137 6.05968 5.52632 6.26316 5.52632C6.46664 5.52632 6.63158 5.36137 6.63158 5.1579V4.78947C6.63158 4.586 6.46664 4.42105 6.26316 4.42105ZM5.15789 5.71053C4.95442 5.71053 4.78947 5.87549 4.78947 6.07895V6.44737C4.78947 6.65085 4.95442 6.81579 5.15789 6.81579C5.36137 6.81579 5.52632 6.65085 5.52632 6.44737V6.07895C5.52632 5.87549 5.36137 5.71053 5.15789 5.71053ZM0 8.28947C0 10.8408 2.05395 12.8947 4.60526 12.8947H9.39474C11.9461 12.8947 14 10.8408 14 8.28947H0ZM3.73026 13.2632C3.8731 13.8995 4.37112 14.3684 4.97368 14.3684H9.02632C9.62888 14.3684 10.1269 13.8995 10.2697 13.2632H3.73026Z" fill="#030A1B"/>
+                                        </svg>
+                                        <span>3</span>
+                                    </div>
+                                </div>
+                                <div class="content-box__footer">
+                                    <span class="content-box__price">$6727.00</span>
+                                    <a href="#" class="content-box__btn">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content-box">
+                            <img class="content-box__img" src="images/home3.png" alt="home3">
+                            <div class="content-box__value">
+                                <div class="content-box__header">
+                                    <h3 class="content-box__title">Banyon Tree Realty</h3>
+                                    <svg class="content-box__heart" width="16" height="14" viewBox="0 0 16 14" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M8 14C7.88969 14 7.77981 13.9617 7.69147 13.8847C7.00941 13.2909 6.36075 12.7404 5.75056 12.2227C2.30678 9.30098 0 7.3705 0 4.55821C0 1.95963 1.84491 0 4.25 0C6.14559 0 7.36234 1.31843 8 2.5056C8.63766 1.31843 9.85441 0 11.75 0C14.1551 0 16 1.95963 16 4.55821C16 7.37053 13.6932 9.30098 10.2494 12.2227C9.63925 12.7404 8.99059 13.2909 8.30853 13.8847C8.22019 13.9617 8.11031 14 8 14Z"/>
+                                    </svg>             
+                                </div>
+                                <div class="content-box__loction">
+                                    <svg width="11" height="15" viewBox="0 0 11 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g opacity="0.7">
+                                        <path d="M10.4672 3.16023C10.0669 2.27357 9.43292 1.51251 8.63319 0.958568C7.83346 0.404625 6.8981 0.0786712 5.9273 0.0156189C5.64307 -0.0052063 5.3577 -0.0052063 5.07347 0.0156189C4.10267 0.0786712 3.16731 0.404625 2.36758 0.958568C1.56785 1.51251 0.933873 2.27357 0.533559 3.16023C0.103591 4.08409 -0.0714897 5.10611 0.0264605 6.1204C0.124411 7.13469 0.491828 8.10433 1.09063 8.92883L5.07867 14.3642C5.12729 14.4304 5.19079 14.4842 5.26405 14.5213C5.33731 14.5584 5.41827 14.5777 5.50038 14.5777C5.5825 14.5777 5.66346 14.5584 5.73672 14.5213C5.80998 14.4842 5.87348 14.4304 5.9221 14.3642L9.91013 8.92883C10.5089 8.10433 10.8764 7.13469 10.9743 6.1204C11.0723 5.10611 10.8972 4.08409 10.4672 3.16023ZM5.50038 7.15103C5.16724 7.15103 4.84158 7.05224 4.56458 6.86716C4.28758 6.68208 4.07169 6.41901 3.9442 6.11122C3.81671 5.80344 3.78336 5.46476 3.84835 5.13802C3.91334 4.81128 4.07377 4.51115 4.30933 4.27558C4.5449 4.04001 4.84503 3.87959 5.17177 3.8146C5.49852 3.74961 5.83719 3.78296 6.14498 3.91045C6.45276 4.03794 6.71583 4.25383 6.90091 4.53083C7.086 4.80783 7.18478 5.13349 7.18478 5.46663C7.18491 5.68787 7.14144 5.90696 7.05683 6.11138C6.97223 6.3158 6.84816 6.50154 6.69173 6.65797C6.53529 6.81441 6.34955 6.93848 6.14513 7.02308C5.94071 7.10768 5.72162 7.15116 5.50038 7.15103Z" fill="#030A1B"/>
+                                        </g>
+                                    </svg>
+                                    <span class="content-box__loction-text">
+                                        East London
+                                    </span>
+                                </div>
+                                <div class="content-box__aptions">
+                                    <div class="content-box__aption">
+                                        <svg width="17" height="13" viewBox="0 0 17 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g opacity="0.7">
+                                            <path d="M15.0787 5.11829H1.26238C0.56632 5.11829 0 5.68461 0 6.3807V9.75337H16.3411V6.3807C16.3411 5.68461 15.7748 5.11829 15.0787 5.11829Z" fill="#030A1B"/>
+                                            <path d="M8.64929 2.15329H12.6982V4.16094H8.64929V2.15329Z" fill="#030A1B"/>
+                                            <path d="M2.68531 1.1959H8.17045H13.6556V4.16104H14.8515V0H1.48944V4.16104H2.68531V1.1959Z" fill="#030A1B"/>
+                                            <path d="M3.6427 2.15329H7.69162V4.16094H3.6427V2.15329Z" fill="#030A1B"/>
+                                            <path d="M0.510681 10.7111H15.8299V12.185H0.510681V10.7111Z" fill="#030A1B"/>
+                                            </g>
+                                        </svg>
+                                        <span>6</span>
+                                    </div>
+                                    <div class="content-box__aption">
+                                        <svg width="13" height="15" viewBox="0 0 13 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g opacity="0.7">
+                                            <path d="M3.91737 5.51658L5.21188 7.5253L6.11952 6.48374L4.76549 4.89164C5.34579 4.04352 5.197 2.64486 4.334 1.49915C3.3222 0.145125 1.70034 -0.375655 0.718303 0.353435C-0.263736 1.08252 -0.233974 2.77878 0.777824 4.1328C1.65571 5.29339 2.95021 5.82905 3.91737 5.51658Z" fill="#030A1B"/>
+                                            <path d="M7.77171 8.43262L6.78967 9.9652L9.17037 13.6404C9.5126 14.1761 10.2417 14.31 10.7625 13.9231L10.8517 13.8487C11.3576 13.4618 11.4469 12.7328 11.0303 12.2417L7.77171 8.43262Z" fill="#030A1B"/>
+                                            <path d="M12.9209 1.60347C12.7869 1.43979 12.534 1.45467 12.415 1.61834C12.415 1.61834 10.7187 3.79073 10.2426 4.40079C10.1682 4.49006 10.0343 4.50494 9.94498 4.44542C9.8557 4.37103 9.82595 4.25199 9.90034 4.14784L11.9388 1.27612C12.0281 1.15708 12.0281 0.978533 11.9239 0.859498C11.79 0.695825 11.5371 0.710701 11.418 0.874374C11.418 0.874374 9.7218 3.04676 9.24566 3.65682C9.17126 3.74609 9.03734 3.76097 8.94807 3.70145C8.85879 3.62706 8.82903 3.50802 8.90342 3.40387C9.36468 2.76405 10.9568 0.517274 10.9568 0.517274C11.0758 0.353601 11.0163 0.115524 10.8229 0.0262475C10.689 -0.03327 10.5253 0.01137 10.4211 0.130405L8.1297 3.07652L7.83212 3.46339C7.53453 3.86513 7.40061 4.34127 7.46013 4.7579L7.59404 5.6209L1.89524 12.2273C1.47862 12.7184 1.5679 13.4474 2.0738 13.8343L2.16307 13.9087C2.66897 14.2956 3.39806 14.1617 3.75516 13.626L8.45704 6.29047L9.33493 6.17144C9.75155 6.11192 10.1682 5.84409 10.4806 5.44234L10.7782 5.05548L12.9357 2.02009C13.025 1.90105 13.025 1.7225 12.9209 1.60347Z" fill="#030A1B"/>
+                                            </g>
+                                        </svg>    
+                                        <span>2</span>
+                                    </div>
+                                    <div class="content-box__aption">
+                                        <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3.31579 0C2.09753 0 1.10526 0.992267 1.10526 2.21053V7.92105H1.84211V2.21053C1.84211 1.38773 2.493 0.736842 3.31579 0.736842C4.01002 0.736842 4.58167 1.20307 4.74342 1.84211H5.49178C5.31481 0.799459 4.4078 0 3.31579 0ZM5.15789 2.21053C4.34147 2.21053 3.68421 2.86779 3.68421 3.68421H6.63158C6.63158 2.86779 5.97432 2.21053 5.15789 2.21053ZM4.05263 4.42105C3.84915 4.42105 3.68421 4.586 3.68421 4.78947V5.1579C3.68421 5.36137 3.84915 5.52632 4.05263 5.52632C4.25611 5.52632 4.42105 5.36137 4.42105 5.1579V4.78947C4.42105 4.586 4.25611 4.42105 4.05263 4.42105ZM6.26316 4.42105C6.05968 4.42105 5.89474 4.586 5.89474 4.78947V5.1579C5.89474 5.36137 6.05968 5.52632 6.26316 5.52632C6.46664 5.52632 6.63158 5.36137 6.63158 5.1579V4.78947C6.63158 4.586 6.46664 4.42105 6.26316 4.42105ZM5.15789 5.71053C4.95442 5.71053 4.78947 5.87549 4.78947 6.07895V6.44737C4.78947 6.65085 4.95442 6.81579 5.15789 6.81579C5.36137 6.81579 5.52632 6.65085 5.52632 6.44737V6.07895C5.52632 5.87549 5.36137 5.71053 5.15789 5.71053ZM0 8.28947C0 10.8408 2.05395 12.8947 4.60526 12.8947H9.39474C11.9461 12.8947 14 10.8408 14 8.28947H0ZM3.73026 13.2632C3.8731 13.8995 4.37112 14.3684 4.97368 14.3684H9.02632C9.62888 14.3684 10.1269 13.8995 10.2697 13.2632H3.73026Z" fill="#030A1B"/>
+                                        </svg>
+                                        <span>3</span>
+                                    </div>
+                                </div>
+                                <div class="content-box__footer">
+                                    <span class="content-box__price">$4327.00</span>
+                                    <a href="#" class="content-box__btn">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content-box">
+                            <img class="content-box__img" src="images/home4.png" alt="home4">
+                            <div class="content-box__value">
+                                <div class="content-box__header">
+                                    <h3 class="content-box__title">Corsair Real Estate</h3>
+                                    <svg class="content-box__heart" width="16" height="14" viewBox="0 0 16 14" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M8 14C7.88969 14 7.77981 13.9617 7.69147 13.8847C7.00941 13.2909 6.36075 12.7404 5.75056 12.2227C2.30678 9.30098 0 7.3705 0 4.55821C0 1.95963 1.84491 0 4.25 0C6.14559 0 7.36234 1.31843 8 2.5056C8.63766 1.31843 9.85441 0 11.75 0C14.1551 0 16 1.95963 16 4.55821C16 7.37053 13.6932 9.30098 10.2494 12.2227C9.63925 12.7404 8.99059 13.2909 8.30853 13.8847C8.22019 13.9617 8.11031 14 8 14Z"/>
+                                    </svg>            
+                                </div>
+                                <div class="content-box__loction">
+                                    <svg width="11" height="15" viewBox="0 0 11 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g opacity="0.7">
+                                        <path d="M10.4672 3.16023C10.0669 2.27357 9.43292 1.51251 8.63319 0.958568C7.83346 0.404625 6.8981 0.0786712 5.9273 0.0156189C5.64307 -0.0052063 5.3577 -0.0052063 5.07347 0.0156189C4.10267 0.0786712 3.16731 0.404625 2.36758 0.958568C1.56785 1.51251 0.933873 2.27357 0.533559 3.16023C0.103591 4.08409 -0.0714897 5.10611 0.0264605 6.1204C0.124411 7.13469 0.491828 8.10433 1.09063 8.92883L5.07867 14.3642C5.12729 14.4304 5.19079 14.4842 5.26405 14.5213C5.33731 14.5584 5.41827 14.5777 5.50038 14.5777C5.5825 14.5777 5.66346 14.5584 5.73672 14.5213C5.80998 14.4842 5.87348 14.4304 5.9221 14.3642L9.91013 8.92883C10.5089 8.10433 10.8764 7.13469 10.9743 6.1204C11.0723 5.10611 10.8972 4.08409 10.4672 3.16023ZM5.50038 7.15103C5.16724 7.15103 4.84158 7.05224 4.56458 6.86716C4.28758 6.68208 4.07169 6.41901 3.9442 6.11122C3.81671 5.80344 3.78336 5.46476 3.84835 5.13802C3.91334 4.81128 4.07377 4.51115 4.30933 4.27558C4.5449 4.04001 4.84503 3.87959 5.17177 3.8146C5.49852 3.74961 5.83719 3.78296 6.14498 3.91045C6.45276 4.03794 6.71583 4.25383 6.90091 4.53083C7.086 4.80783 7.18478 5.13349 7.18478 5.46663C7.18491 5.68787 7.14144 5.90696 7.05683 6.11138C6.97223 6.3158 6.84816 6.50154 6.69173 6.65797C6.53529 6.81441 6.34955 6.93848 6.14513 7.02308C5.94071 7.10768 5.72162 7.15116 5.50038 7.15103Z" fill="#030A1B"/>
+                                        </g>
+                                    </svg>
+                                    <span class="content-box__loction-text">
+                                        East London
+                                    </span>
+                                </div>
+                                <div class="content-box__aptions">
+                                    <div class="content-box__aption">
+                                        <svg width="17" height="13" viewBox="0 0 17 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g opacity="0.7">
+                                            <path d="M15.0787 5.11829H1.26238C0.56632 5.11829 0 5.68461 0 6.3807V9.75337H16.3411V6.3807C16.3411 5.68461 15.7748 5.11829 15.0787 5.11829Z" fill="#030A1B"/>
+                                            <path d="M8.64929 2.15329H12.6982V4.16094H8.64929V2.15329Z" fill="#030A1B"/>
+                                            <path d="M2.68531 1.1959H8.17045H13.6556V4.16104H14.8515V0H1.48944V4.16104H2.68531V1.1959Z" fill="#030A1B"/>
+                                            <path d="M3.6427 2.15329H7.69162V4.16094H3.6427V2.15329Z" fill="#030A1B"/>
+                                            <path d="M0.510681 10.7111H15.8299V12.185H0.510681V10.7111Z" fill="#030A1B"/>
+                                            </g>
+                                        </svg>
+                                        <span>6</span>
+                                    </div>
+                                    <div class="content-box__aption">
+                                        <svg width="13" height="15" viewBox="0 0 13 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g opacity="0.7">
+                                            <path d="M3.91737 5.51658L5.21188 7.5253L6.11952 6.48374L4.76549 4.89164C5.34579 4.04352 5.197 2.64486 4.334 1.49915C3.3222 0.145125 1.70034 -0.375655 0.718303 0.353435C-0.263736 1.08252 -0.233974 2.77878 0.777824 4.1328C1.65571 5.29339 2.95021 5.82905 3.91737 5.51658Z" fill="#030A1B"/>
+                                            <path d="M7.77171 8.43262L6.78967 9.9652L9.17037 13.6404C9.5126 14.1761 10.2417 14.31 10.7625 13.9231L10.8517 13.8487C11.3576 13.4618 11.4469 12.7328 11.0303 12.2417L7.77171 8.43262Z" fill="#030A1B"/>
+                                            <path d="M12.9209 1.60347C12.7869 1.43979 12.534 1.45467 12.415 1.61834C12.415 1.61834 10.7187 3.79073 10.2426 4.40079C10.1682 4.49006 10.0343 4.50494 9.94498 4.44542C9.8557 4.37103 9.82595 4.25199 9.90034 4.14784L11.9388 1.27612C12.0281 1.15708 12.0281 0.978533 11.9239 0.859498C11.79 0.695825 11.5371 0.710701 11.418 0.874374C11.418 0.874374 9.7218 3.04676 9.24566 3.65682C9.17126 3.74609 9.03734 3.76097 8.94807 3.70145C8.85879 3.62706 8.82903 3.50802 8.90342 3.40387C9.36468 2.76405 10.9568 0.517274 10.9568 0.517274C11.0758 0.353601 11.0163 0.115524 10.8229 0.0262475C10.689 -0.03327 10.5253 0.01137 10.4211 0.130405L8.1297 3.07652L7.83212 3.46339C7.53453 3.86513 7.40061 4.34127 7.46013 4.7579L7.59404 5.6209L1.89524 12.2273C1.47862 12.7184 1.5679 13.4474 2.0738 13.8343L2.16307 13.9087C2.66897 14.2956 3.39806 14.1617 3.75516 13.626L8.45704 6.29047L9.33493 6.17144C9.75155 6.11192 10.1682 5.84409 10.4806 5.44234L10.7782 5.05548L12.9357 2.02009C13.025 1.90105 13.025 1.7225 12.9209 1.60347Z" fill="#030A1B"/>
+                                            </g>
+                                        </svg>    
+                                        <span>2</span>
+                                    </div>
+                                    <div class="content-box__aption">
+                                        <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3.31579 0C2.09753 0 1.10526 0.992267 1.10526 2.21053V7.92105H1.84211V2.21053C1.84211 1.38773 2.493 0.736842 3.31579 0.736842C4.01002 0.736842 4.58167 1.20307 4.74342 1.84211H5.49178C5.31481 0.799459 4.4078 0 3.31579 0ZM5.15789 2.21053C4.34147 2.21053 3.68421 2.86779 3.68421 3.68421H6.63158C6.63158 2.86779 5.97432 2.21053 5.15789 2.21053ZM4.05263 4.42105C3.84915 4.42105 3.68421 4.586 3.68421 4.78947V5.1579C3.68421 5.36137 3.84915 5.52632 4.05263 5.52632C4.25611 5.52632 4.42105 5.36137 4.42105 5.1579V4.78947C4.42105 4.586 4.25611 4.42105 4.05263 4.42105ZM6.26316 4.42105C6.05968 4.42105 5.89474 4.586 5.89474 4.78947V5.1579C5.89474 5.36137 6.05968 5.52632 6.26316 5.52632C6.46664 5.52632 6.63158 5.36137 6.63158 5.1579V4.78947C6.63158 4.586 6.46664 4.42105 6.26316 4.42105ZM5.15789 5.71053C4.95442 5.71053 4.78947 5.87549 4.78947 6.07895V6.44737C4.78947 6.65085 4.95442 6.81579 5.15789 6.81579C5.36137 6.81579 5.52632 6.65085 5.52632 6.44737V6.07895C5.52632 5.87549 5.36137 5.71053 5.15789 5.71053ZM0 8.28947C0 10.8408 2.05395 12.8947 4.60526 12.8947H9.39474C11.9461 12.8947 14 10.8408 14 8.28947H0ZM3.73026 13.2632C3.8731 13.8995 4.37112 14.3684 4.97368 14.3684H9.02632C9.62888 14.3684 10.1269 13.8995 10.2697 13.2632H3.73026Z" fill="#030A1B"/>
+                                        </svg>
+                                        <span>3</span>
+                                    </div>
+                                </div>
+                                <div class="content-box__footer">
+                                    <span class="content-box__price">$4427.00</span>
+                                    <a href="#" class="content-box__btn">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content-box">
+                            <img class="content-box__img" src="images/home5.png" alt="home5">
+                            <div class="content-box__value">
+                                <div class="content-box__header">
+                                    <h3 class="content-box__title">Sequoia Real Estate</h3>
+                                    <svg class="content-box__heart" width="16" height="14" viewBox="0 0 16 14" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M8 14C7.88969 14 7.77981 13.9617 7.69147 13.8847C7.00941 13.2909 6.36075 12.7404 5.75056 12.2227C2.30678 9.30098 0 7.3705 0 4.55821C0 1.95963 1.84491 0 4.25 0C6.14559 0 7.36234 1.31843 8 2.5056C8.63766 1.31843 9.85441 0 11.75 0C14.1551 0 16 1.95963 16 4.55821C16 7.37053 13.6932 9.30098 10.2494 12.2227C9.63925 12.7404 8.99059 13.2909 8.30853 13.8847C8.22019 13.9617 8.11031 14 8 14Z"/>
+                                    </svg>            
+                                </div>
+                                <div class="content-box__loction">
+                                    <svg width="11" height="15" viewBox="0 0 11 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g opacity="0.7">
+                                        <path d="M10.4672 3.16023C10.0669 2.27357 9.43292 1.51251 8.63319 0.958568C7.83346 0.404625 6.8981 0.0786712 5.9273 0.0156189C5.64307 -0.0052063 5.3577 -0.0052063 5.07347 0.0156189C4.10267 0.0786712 3.16731 0.404625 2.36758 0.958568C1.56785 1.51251 0.933873 2.27357 0.533559 3.16023C0.103591 4.08409 -0.0714897 5.10611 0.0264605 6.1204C0.124411 7.13469 0.491828 8.10433 1.09063 8.92883L5.07867 14.3642C5.12729 14.4304 5.19079 14.4842 5.26405 14.5213C5.33731 14.5584 5.41827 14.5777 5.50038 14.5777C5.5825 14.5777 5.66346 14.5584 5.73672 14.5213C5.80998 14.4842 5.87348 14.4304 5.9221 14.3642L9.91013 8.92883C10.5089 8.10433 10.8764 7.13469 10.9743 6.1204C11.0723 5.10611 10.8972 4.08409 10.4672 3.16023ZM5.50038 7.15103C5.16724 7.15103 4.84158 7.05224 4.56458 6.86716C4.28758 6.68208 4.07169 6.41901 3.9442 6.11122C3.81671 5.80344 3.78336 5.46476 3.84835 5.13802C3.91334 4.81128 4.07377 4.51115 4.30933 4.27558C4.5449 4.04001 4.84503 3.87959 5.17177 3.8146C5.49852 3.74961 5.83719 3.78296 6.14498 3.91045C6.45276 4.03794 6.71583 4.25383 6.90091 4.53083C7.086 4.80783 7.18478 5.13349 7.18478 5.46663C7.18491 5.68787 7.14144 5.90696 7.05683 6.11138C6.97223 6.3158 6.84816 6.50154 6.69173 6.65797C6.53529 6.81441 6.34955 6.93848 6.14513 7.02308C5.94071 7.10768 5.72162 7.15116 5.50038 7.15103Z" fill="#030A1B"/>
+                                        </g>
+                                    </svg>
+                                    <span class="content-box__loction-text">
+                                        East London
+                                    </span>
+                                </div>
+                                <div class="content-box__aptions">
+                                    <div class="content-box__aption">
+                                        <svg width="17" height="13" viewBox="0 0 17 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g opacity="0.7">
+                                            <path d="M15.0787 5.11829H1.26238C0.56632 5.11829 0 5.68461 0 6.3807V9.75337H16.3411V6.3807C16.3411 5.68461 15.7748 5.11829 15.0787 5.11829Z" fill="#030A1B"/>
+                                            <path d="M8.64929 2.15329H12.6982V4.16094H8.64929V2.15329Z" fill="#030A1B"/>
+                                            <path d="M2.68531 1.1959H8.17045H13.6556V4.16104H14.8515V0H1.48944V4.16104H2.68531V1.1959Z" fill="#030A1B"/>
+                                            <path d="M3.6427 2.15329H7.69162V4.16094H3.6427V2.15329Z" fill="#030A1B"/>
+                                            <path d="M0.510681 10.7111H15.8299V12.185H0.510681V10.7111Z" fill="#030A1B"/>
+                                            </g>
+                                        </svg>
+                                        <span>6</span>
+                                    </div>
+                                    <div class="content-box__aption">
+                                        <svg width="13" height="15" viewBox="0 0 13 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g opacity="0.7">
+                                            <path d="M3.91737 5.51658L5.21188 7.5253L6.11952 6.48374L4.76549 4.89164C5.34579 4.04352 5.197 2.64486 4.334 1.49915C3.3222 0.145125 1.70034 -0.375655 0.718303 0.353435C-0.263736 1.08252 -0.233974 2.77878 0.777824 4.1328C1.65571 5.29339 2.95021 5.82905 3.91737 5.51658Z" fill="#030A1B"/>
+                                            <path d="M7.77171 8.43262L6.78967 9.9652L9.17037 13.6404C9.5126 14.1761 10.2417 14.31 10.7625 13.9231L10.8517 13.8487C11.3576 13.4618 11.4469 12.7328 11.0303 12.2417L7.77171 8.43262Z" fill="#030A1B"/>
+                                            <path d="M12.9209 1.60347C12.7869 1.43979 12.534 1.45467 12.415 1.61834C12.415 1.61834 10.7187 3.79073 10.2426 4.40079C10.1682 4.49006 10.0343 4.50494 9.94498 4.44542C9.8557 4.37103 9.82595 4.25199 9.90034 4.14784L11.9388 1.27612C12.0281 1.15708 12.0281 0.978533 11.9239 0.859498C11.79 0.695825 11.5371 0.710701 11.418 0.874374C11.418 0.874374 9.7218 3.04676 9.24566 3.65682C9.17126 3.74609 9.03734 3.76097 8.94807 3.70145C8.85879 3.62706 8.82903 3.50802 8.90342 3.40387C9.36468 2.76405 10.9568 0.517274 10.9568 0.517274C11.0758 0.353601 11.0163 0.115524 10.8229 0.0262475C10.689 -0.03327 10.5253 0.01137 10.4211 0.130405L8.1297 3.07652L7.83212 3.46339C7.53453 3.86513 7.40061 4.34127 7.46013 4.7579L7.59404 5.6209L1.89524 12.2273C1.47862 12.7184 1.5679 13.4474 2.0738 13.8343L2.16307 13.9087C2.66897 14.2956 3.39806 14.1617 3.75516 13.626L8.45704 6.29047L9.33493 6.17144C9.75155 6.11192 10.1682 5.84409 10.4806 5.44234L10.7782 5.05548L12.9357 2.02009C13.025 1.90105 13.025 1.7225 12.9209 1.60347Z" fill="#030A1B"/>
+                                            </g>
+                                        </svg>    
+                                        <span>2</span>
+                                    </div>
+                                    <div class="content-box__aption">
+                                        <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3.31579 0C2.09753 0 1.10526 0.992267 1.10526 2.21053V7.92105H1.84211V2.21053C1.84211 1.38773 2.493 0.736842 3.31579 0.736842C4.01002 0.736842 4.58167 1.20307 4.74342 1.84211H5.49178C5.31481 0.799459 4.4078 0 3.31579 0ZM5.15789 2.21053C4.34147 2.21053 3.68421 2.86779 3.68421 3.68421H6.63158C6.63158 2.86779 5.97432 2.21053 5.15789 2.21053ZM4.05263 4.42105C3.84915 4.42105 3.68421 4.586 3.68421 4.78947V5.1579C3.68421 5.36137 3.84915 5.52632 4.05263 5.52632C4.25611 5.52632 4.42105 5.36137 4.42105 5.1579V4.78947C4.42105 4.586 4.25611 4.42105 4.05263 4.42105ZM6.26316 4.42105C6.05968 4.42105 5.89474 4.586 5.89474 4.78947V5.1579C5.89474 5.36137 6.05968 5.52632 6.26316 5.52632C6.46664 5.52632 6.63158 5.36137 6.63158 5.1579V4.78947C6.63158 4.586 6.46664 4.42105 6.26316 4.42105ZM5.15789 5.71053C4.95442 5.71053 4.78947 5.87549 4.78947 6.07895V6.44737C4.78947 6.65085 4.95442 6.81579 5.15789 6.81579C5.36137 6.81579 5.52632 6.65085 5.52632 6.44737V6.07895C5.52632 5.87549 5.36137 5.71053 5.15789 5.71053ZM0 8.28947C0 10.8408 2.05395 12.8947 4.60526 12.8947H9.39474C11.9461 12.8947 14 10.8408 14 8.28947H0ZM3.73026 13.2632C3.8731 13.8995 4.37112 14.3684 4.97368 14.3684H9.02632C9.62888 14.3684 10.1269 13.8995 10.2697 13.2632H3.73026Z" fill="#030A1B"/>
+                                        </svg>
+                                        <span>3</span>
+                                    </div>
+                                </div>
+                                <div class="content-box__footer">
+                                    <span class="content-box__price">$4527.00</span>
+                                    <a href="#" class="content-box__btn">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content-box">
+                            <img class="content-box__img" src="images/home6.png" alt="home6">
+                            <div class="content-box__value">
+                                <div class="content-box__header">
+                                    <h3 class="content-box__title">Strive Partners Realty</h3>
+                                    <svg class="content-box__heart" width="16" height="14" viewBox="0 0 16 14" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M8 14C7.88969 14 7.77981 13.9617 7.69147 13.8847C7.00941 13.2909 6.36075 12.7404 5.75056 12.2227C2.30678 9.30098 0 7.3705 0 4.55821C0 1.95963 1.84491 0 4.25 0C6.14559 0 7.36234 1.31843 8 2.5056C8.63766 1.31843 9.85441 0 11.75 0C14.1551 0 16 1.95963 16 4.55821C16 7.37053 13.6932 9.30098 10.2494 12.2227C9.63925 12.7404 8.99059 13.2909 8.30853 13.8847C8.22019 13.9617 8.11031 14 8 14Z"/>
+                                    </svg>            
+                                </div>
+                                <div class="content-box__loction">
+                                    <svg width="11" height="15" viewBox="0 0 11 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g opacity="0.7">
+                                        <path d="M10.4672 3.16023C10.0669 2.27357 9.43292 1.51251 8.63319 0.958568C7.83346 0.404625 6.8981 0.0786712 5.9273 0.0156189C5.64307 -0.0052063 5.3577 -0.0052063 5.07347 0.0156189C4.10267 0.0786712 3.16731 0.404625 2.36758 0.958568C1.56785 1.51251 0.933873 2.27357 0.533559 3.16023C0.103591 4.08409 -0.0714897 5.10611 0.0264605 6.1204C0.124411 7.13469 0.491828 8.10433 1.09063 8.92883L5.07867 14.3642C5.12729 14.4304 5.19079 14.4842 5.26405 14.5213C5.33731 14.5584 5.41827 14.5777 5.50038 14.5777C5.5825 14.5777 5.66346 14.5584 5.73672 14.5213C5.80998 14.4842 5.87348 14.4304 5.9221 14.3642L9.91013 8.92883C10.5089 8.10433 10.8764 7.13469 10.9743 6.1204C11.0723 5.10611 10.8972 4.08409 10.4672 3.16023ZM5.50038 7.15103C5.16724 7.15103 4.84158 7.05224 4.56458 6.86716C4.28758 6.68208 4.07169 6.41901 3.9442 6.11122C3.81671 5.80344 3.78336 5.46476 3.84835 5.13802C3.91334 4.81128 4.07377 4.51115 4.30933 4.27558C4.5449 4.04001 4.84503 3.87959 5.17177 3.8146C5.49852 3.74961 5.83719 3.78296 6.14498 3.91045C6.45276 4.03794 6.71583 4.25383 6.90091 4.53083C7.086 4.80783 7.18478 5.13349 7.18478 5.46663C7.18491 5.68787 7.14144 5.90696 7.05683 6.11138C6.97223 6.3158 6.84816 6.50154 6.69173 6.65797C6.53529 6.81441 6.34955 6.93848 6.14513 7.02308C5.94071 7.10768 5.72162 7.15116 5.50038 7.15103Z" fill="#030A1B"/>
+                                        </g>
+                                    </svg>
+                                    <span class="content-box__loction-text">
+                                        East London
+                                    </span>
+                                </div>
+                                <div class="content-box__aptions">
+                                    <div class="content-box__aption">
+                                        <svg width="17" height="13" viewBox="0 0 17 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g opacity="0.7">
+                                            <path d="M15.0787 5.11829H1.26238C0.56632 5.11829 0 5.68461 0 6.3807V9.75337H16.3411V6.3807C16.3411 5.68461 15.7748 5.11829 15.0787 5.11829Z" fill="#030A1B"/>
+                                            <path d="M8.64929 2.15329H12.6982V4.16094H8.64929V2.15329Z" fill="#030A1B"/>
+                                            <path d="M2.68531 1.1959H8.17045H13.6556V4.16104H14.8515V0H1.48944V4.16104H2.68531V1.1959Z" fill="#030A1B"/>
+                                            <path d="M3.6427 2.15329H7.69162V4.16094H3.6427V2.15329Z" fill="#030A1B"/>
+                                            <path d="M0.510681 10.7111H15.8299V12.185H0.510681V10.7111Z" fill="#030A1B"/>
+                                            </g>
+                                        </svg>
+                                        <span>6</span>
+                                    </div>
+                                    <div class="content-box__aption">
+                                        <svg width="13" height="15" viewBox="0 0 13 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g opacity="0.7">
+                                            <path d="M3.91737 5.51658L5.21188 7.5253L6.11952 6.48374L4.76549 4.89164C5.34579 4.04352 5.197 2.64486 4.334 1.49915C3.3222 0.145125 1.70034 -0.375655 0.718303 0.353435C-0.263736 1.08252 -0.233974 2.77878 0.777824 4.1328C1.65571 5.29339 2.95021 5.82905 3.91737 5.51658Z" fill="#030A1B"/>
+                                            <path d="M7.77171 8.43262L6.78967 9.9652L9.17037 13.6404C9.5126 14.1761 10.2417 14.31 10.7625 13.9231L10.8517 13.8487C11.3576 13.4618 11.4469 12.7328 11.0303 12.2417L7.77171 8.43262Z" fill="#030A1B"/>
+                                            <path d="M12.9209 1.60347C12.7869 1.43979 12.534 1.45467 12.415 1.61834C12.415 1.61834 10.7187 3.79073 10.2426 4.40079C10.1682 4.49006 10.0343 4.50494 9.94498 4.44542C9.8557 4.37103 9.82595 4.25199 9.90034 4.14784L11.9388 1.27612C12.0281 1.15708 12.0281 0.978533 11.9239 0.859498C11.79 0.695825 11.5371 0.710701 11.418 0.874374C11.418 0.874374 9.7218 3.04676 9.24566 3.65682C9.17126 3.74609 9.03734 3.76097 8.94807 3.70145C8.85879 3.62706 8.82903 3.50802 8.90342 3.40387C9.36468 2.76405 10.9568 0.517274 10.9568 0.517274C11.0758 0.353601 11.0163 0.115524 10.8229 0.0262475C10.689 -0.03327 10.5253 0.01137 10.4211 0.130405L8.1297 3.07652L7.83212 3.46339C7.53453 3.86513 7.40061 4.34127 7.46013 4.7579L7.59404 5.6209L1.89524 12.2273C1.47862 12.7184 1.5679 13.4474 2.0738 13.8343L2.16307 13.9087C2.66897 14.2956 3.39806 14.1617 3.75516 13.626L8.45704 6.29047L9.33493 6.17144C9.75155 6.11192 10.1682 5.84409 10.4806 5.44234L10.7782 5.05548L12.9357 2.02009C13.025 1.90105 13.025 1.7225 12.9209 1.60347Z" fill="#030A1B"/>
+                                            </g>
+                                        </svg>    
+                                        <span>2</span>
+                                    </div>
+                                    <div class="content-box__aption">
+                                        <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3.31579 0C2.09753 0 1.10526 0.992267 1.10526 2.21053V7.92105H1.84211V2.21053C1.84211 1.38773 2.493 0.736842 3.31579 0.736842C4.01002 0.736842 4.58167 1.20307 4.74342 1.84211H5.49178C5.31481 0.799459 4.4078 0 3.31579 0ZM5.15789 2.21053C4.34147 2.21053 3.68421 2.86779 3.68421 3.68421H6.63158C6.63158 2.86779 5.97432 2.21053 5.15789 2.21053ZM4.05263 4.42105C3.84915 4.42105 3.68421 4.586 3.68421 4.78947V5.1579C3.68421 5.36137 3.84915 5.52632 4.05263 5.52632C4.25611 5.52632 4.42105 5.36137 4.42105 5.1579V4.78947C4.42105 4.586 4.25611 4.42105 4.05263 4.42105ZM6.26316 4.42105C6.05968 4.42105 5.89474 4.586 5.89474 4.78947V5.1579C5.89474 5.36137 6.05968 5.52632 6.26316 5.52632C6.46664 5.52632 6.63158 5.36137 6.63158 5.1579V4.78947C6.63158 4.586 6.46664 4.42105 6.26316 4.42105ZM5.15789 5.71053C4.95442 5.71053 4.78947 5.87549 4.78947 6.07895V6.44737C4.78947 6.65085 4.95442 6.81579 5.15789 6.81579C5.36137 6.81579 5.52632 6.65085 5.52632 6.44737V6.07895C5.52632 5.87549 5.36137 5.71053 5.15789 5.71053ZM0 8.28947C0 10.8408 2.05395 12.8947 4.60526 12.8947H9.39474C11.9461 12.8947 14 10.8408 14 8.28947H0ZM3.73026 13.2632C3.8731 13.8995 4.37112 14.3684 4.97368 14.3684H9.02632C9.62888 14.3684 10.1269 13.8995 10.2697 13.2632H3.73026Z" fill="#030A1B"/>
+                                        </svg>
+                                        <span>3</span>
+                                    </div>
+                                </div>
+                                <div class="content-box__footer">
+                                    <span class="content-box__price">$5527.00</span>
+                                    <a href="#" class="content-box__btn">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--//// section Home Property ////-->
+        <section class="section-Home-Property">
+            <div class="container">
+                <div class="Home-Property">
+                   <div class="Home-Property__header">
+                        <div class="Home-Property__header-title">
+                            <h2 class="section-title ">Property Featured</h2>
+                            <svg class="Home-Property__header-shap" width="50" height="64" viewBox="0 0 50 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g opacity="0.1">
+                                <path d="M11.7734 63.9319H16.5135C17.1309 63.9319 17.6158 63.4468 17.6158 62.8296V52.0484C17.6158 48.0137 20.879 44.7507 24.9135 44.7507C26.8537 44.7507 28.6837 45.5223 30.0727 46.8892C31.4396 48.2782 32.2112 50.1082 32.2112 52.0484V62.8296C32.2112 63.4468 32.6963 63.9319 33.3136 63.9319H38.0538C44.5357 63.9319 49.827 58.6405 49.827 52.1586V22.6371C49.827 22.3286 49.6947 22.0199 49.4743 21.8214L25.6632 0.281176C25.2443 -0.0937252 24.5829 -0.0937252 24.164 0.281176L0.352705 21.8214C0.132279 22.0199 0 22.3285 0 22.6371V52.1586C0 58.6405 5.29143 63.9319 11.7734 63.9319Z" fill="#FE753F"/>
+                                <rect x="13.9186" y="35.2305" width="24.7204" height="28.7694" fill="#FE753F"/>
+                                </g>
+                            </svg>
+                        </div>
+                        <p class="Home-Property__header-text">Real estate is a crowded field. But with the number of buyers purchasing homes through real estate agents and brokers growing there’s plenty of </p>
+                   </div>
+                   <div class="Home-Property__content">
+                        <div class="Home-Property__box-wrapper">
+                            <div class="Property-box">
+                                <div class="Property-box__icon-wrapper">
+                                    <svg class="Property-box__icon" width="19" height="23" viewBox="0 0 19 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9.49994 6.90536C7.15573 6.90536 5.24866 8.81243 5.24866 11.1565C5.24866 13.5007 7.15573 15.4078 9.49994 15.4078C11.844 15.4078 13.7511 13.5007 13.7511 11.1565C13.7511 8.81243 11.844 6.90536 9.49994 6.90536ZM12.0239 10.3559L8.97836 13.4015C8.85052 13.5293 8.68285 13.5933 8.51534 13.5933C8.34784 13.5933 8.18033 13.5295 8.05249 13.4015L6.88864 12.2376C6.63296 11.9821 6.63296 11.5676 6.88864 11.3119C7.14415 11.0562 7.55866 11.0562 7.81434 11.3119L8.51534 12.0129L11.0982 9.43019C11.3537 9.17451 11.7682 9.17451 12.0239 9.43019C12.2796 9.68571 12.2796 10.1002 12.0239 10.3559Z" fill="#FE753F"/>
+                                        <path d="M18.9779 6.05386L18.9772 6.0365C18.9675 5.82218 18.961 5.59544 18.9571 5.34316C18.9389 4.11292 17.9609 3.0953 16.7305 3.02653C14.1652 2.88336 12.1807 2.04686 10.485 0.39412L10.4705 0.380332C9.91748 -0.126777 9.08319 -0.126777 8.52995 0.380332L8.51548 0.39412C6.81984 2.04686 4.83532 2.88336 2.26998 3.0267C1.03974 3.0953 0.0616146 4.11292 0.0434002 5.34333C0.0396552 5.5939 0.0330163 5.82065 0.0233133 6.0365L0.0222919 6.07684C-0.0275849 8.69274 -0.0895478 11.9483 0.999571 14.9033C1.59843 16.5283 2.50541 17.9409 3.69513 19.102C5.05015 20.4243 6.82494 21.4741 8.97016 22.2221C9.03995 22.2465 9.11247 22.2662 9.18635 22.281C9.29053 22.3018 9.39539 22.3122 9.50025 22.3122C9.60511 22.3122 9.71014 22.3018 9.81415 22.281C9.88803 22.2662 9.96105 22.2463 10.0312 22.2218C12.1738 21.4724 13.9468 20.4221 15.3006 19.1C16.4898 17.9385 17.3968 16.5256 17.9962 14.9003C19.0894 11.9364 19.0276 8.67469 18.9779 6.05386ZM9.49991 16.7169C6.43376 16.7169 3.93941 14.2226 3.93941 11.1564C3.93941 8.0903 6.43376 5.59595 9.49991 5.59595C12.5659 5.59595 15.0604 8.0903 15.0604 11.1564C15.0604 14.2226 12.5659 16.7169 9.49991 16.7169Z" fill="#FE753F"/>
+                                    </svg>
+                                </div>
+                                <h3 class="Property-box__title">100% Security</h3>
+                                <p class="Property-box__text">For many of us, buying a home is a dre and one not easily attainable. </p>
+                            </div>
+                            <div class="Property-box">
+                                <div class="Property-box__icon-wrapper">
+                                    <svg width="22" height="15" viewBox="0 0 22 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M17.662 6.43518H4.32868C3.84257 6.43518 3.4259 6.8287 3.4259 7.33796V8.33333H18.5416V7.33796C18.5648 6.8287 18.1481 6.43518 17.662 6.43518Z" fill="#FE753F"/>
+                                        <path d="M20.7407 0H1.25C0.555556 0 0 0.555555 0 1.25V7.10648C0 7.80093 0.555556 8.35648 1.25 8.35648H2.38426V7.36111C2.38426 6.27315 3.26389 5.41667 4.3287 5.41667H17.662C18.75 5.41667 19.6065 6.2963 19.6065 7.36111V8.35648H20.7407C21.4352 8.35648 21.9907 7.80093 21.9907 7.10648V1.22685C21.9907 0.555555 21.4352 0 20.7407 0ZM15.8333 3.00926H14.5602C14.2593 3.00926 14.0278 2.77778 14.0278 2.47685C14.0278 2.17593 14.2593 1.94444 14.5602 1.94444H15.8333C16.1343 1.94444 16.3657 2.17593 16.3657 2.47685C16.3426 2.75463 16.1111 3.00926 15.8333 3.00926ZM19.0741 3.00926H17.8009C17.5 3.00926 17.2685 2.77778 17.2685 2.47685C17.2685 2.17593 17.5 1.94444 17.8009 1.94444H19.0741C19.375 1.94444 19.6065 2.17593 19.6065 2.47685C19.6065 2.75463 19.375 3.00926 19.0741 3.00926Z" fill="#FE753F"/>
+                                        <path d="M13.1018 10.9259L13.3333 10.5324C13.4954 10.2778 13.4028 9.93058 13.1481 9.76854C12.8935 9.6065 12.5463 9.69909 12.3843 9.95372L12.1528 10.3472C11.6898 11.1111 11.7593 12.0834 12.3148 12.7547C12.5463 13.0324 12.5926 13.4259 12.4537 13.75L12.2454 14.213C12.1296 14.4908 12.2685 14.8148 12.5463 14.9537C12.6157 14.9769 12.6852 15 12.7546 15C12.963 15 13.1713 14.8611 13.2639 14.6528L13.4722 14.1898C13.7731 13.4722 13.6574 12.6621 13.1713 12.0602C12.9167 11.7361 12.8935 11.2963 13.1018 10.9259Z" fill="#FE753F"/>
+                                        <path d="M9.60642 10.9259L9.83791 10.5324C9.99994 10.2778 9.90735 9.93058 9.65272 9.76854C9.39809 9.6065 9.05087 9.69909 8.88883 9.95372L8.65735 10.3472C8.19439 11.1111 8.26383 12.0834 8.81939 12.7547C9.05087 13.0324 9.09717 13.4259 8.95828 13.75L8.74994 14.213C8.6342 14.4908 8.77309 14.8148 9.05087 14.9537C9.12031 14.9769 9.18976 15 9.2592 15C9.46754 15 9.67587 14.8611 9.76846 14.6528L9.97679 14.1898C10.2777 13.4722 10.162 12.6621 9.67587 12.0602C9.42124 11.7361 9.39809 11.2963 9.60642 10.9259Z" fill="#FE753F"/>
+                                        <path d="M16.5972 10.9259L16.8287 10.5324C16.9907 10.2778 16.8981 9.93058 16.6435 9.76854C16.3889 9.6065 16.0417 9.69909 15.8796 9.95372L15.6481 10.3472C15.1852 11.1111 15.2546 12.0834 15.8102 12.7547C16.0417 13.0324 16.0879 13.4259 15.9491 13.75L15.7407 14.213C15.625 14.4908 15.7639 14.8148 16.0417 14.9537C16.1111 14.9769 16.1805 15 16.25 15C16.4583 15 16.6667 14.8611 16.7592 14.6528L16.9676 14.1898C17.2685 13.4722 17.1528 12.6621 16.6667 12.0602C16.412 11.7361 16.3889 11.2963 16.5972 10.9259Z" fill="#FE753F"/>
+                                        <path d="M6.11119 10.9259L6.34267 10.5324C6.5047 10.2778 6.41211 9.93058 6.15748 9.76854C5.90285 9.6065 5.55563 9.69909 5.39359 9.95372L5.16211 10.3472C4.69915 11.1111 4.76859 12.0834 5.32415 12.7547C5.55563 13.0324 5.60193 13.4259 5.46304 13.75L5.2547 14.213C5.13896 14.4908 5.27785 14.8148 5.55563 14.9537C5.62507 14.9769 5.69452 15 5.76396 15C5.9723 15 6.18063 14.8611 6.27322 14.6528L6.48156 14.1898C6.78248 13.4722 6.66674 12.6621 6.18063 12.0602C5.926 11.7361 5.90285 11.2963 6.11119 10.9259Z" fill="#FE753F"/>
+                                    </svg>
+                                </div>
+                                <h3 class="Property-box__title">Free air conditioner</h3>
+                                <p class="Property-box__text">For many of us, buying a home is a dre and one not easily attainable. </p>
+                            </div>
+                            <div class="Property-box">
+                                <div class="Property-box__icon-wrapper">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M16.3333 18.3333C16.5177 18.3333 16.6667 18.4827 16.6667 18.6667C16.6667 18.8507 16.5177 19 16.3333 19H15.3333C15.149 19 15 18.8507 15 18.6667C15 18.4827 15.149 18.3333 15.3333 18.3333H16.3333ZM17 16H17.6667C17.851 16 18 16.1493 18 16.3333C18 16.5173 17.851 16.6667 17.6667 16.6667H17C16.8157 16.6667 16.6667 16.5173 16.6667 16.3333C16.6667 16.1493 16.8157 16 17 16ZM14 17C14 16.816 14.149 16.6667 14.3333 16.6667H15C15.1843 16.6667 15.3333 16.816 15.3333 17C15.3333 17.184 15.1843 17.3333 15 17.3333H14.3333C14.149 17.3333 14 17.184 14 17ZM13.3333 16H12.6667C12.4823 16 12.3333 15.8507 12.3333 15.6667C12.3333 15.4827 12.4823 15.3333 12.6667 15.3333H13.3333C13.5177 15.3333 13.6667 15.4827 13.6667 15.6667C13.6667 15.8507 13.5177 16 13.3333 16ZM12 19H11.3333C11.149 19 11 18.8507 11 18.6667C11 18.4827 11.149 18.3333 11.3333 18.3333H12C12.1843 18.3333 12.3333 18.4827 12.3333 18.6667C12.3333 18.8507 12.1843 19 12 19ZM10.3333 16.6667C10.3333 16.4827 10.4823 16.3333 10.6667 16.3333H11.3333C11.5177 16.3333 11.6667 16.4827 11.6667 16.6667C11.6667 16.8507 11.5177 17 11.3333 17H10.6667C10.4823 17 10.3333 16.8507 10.3333 16.6667ZM9 15.6667H8C7.81567 15.6667 7.66667 15.5173 7.66667 15.3333C7.66667 15.1493 7.81567 15 8 15H9C9.18433 15 9.33333 15.1493 9.33333 15.3333C9.33333 15.5173 9.18433 15.6667 9 15.6667ZM9 17.6667H8.33333C8.149 17.6667 8 17.5173 8 17.3333C8 17.1493 8.149 17 8.33333 17H9C9.18433 17 9.33333 17.1493 9.33333 17.3333C9.33333 17.5173 9.18433 17.6667 9 17.6667ZM7.33333 19H6.33333C6.149 19 6 18.8507 6 18.6667C6 18.4827 6.149 18.3333 6.33333 18.3333H7.33333C7.51767 18.3333 7.66667 18.4827 7.66667 18.6667C7.66667 18.8507 7.51767 19 7.33333 19ZM5 17C5 16.816 5.149 16.6667 5.33333 16.6667H6C6.18433 16.6667 6.33333 16.816 6.33333 17C6.33333 17.184 6.18433 17.3333 6 17.3333H5.33333C5.149 17.3333 5 17.184 5 17ZM4.33333 16H3.66667C3.48233 16 3.33333 15.8507 3.33333 15.6667C3.33333 15.4827 3.48233 15.3333 3.66667 15.3333H4.33333C4.51767 15.3333 4.66667 15.4827 4.66667 15.6667C4.66667 15.8507 4.51767 16 4.33333 16ZM4 18.6667H3.33333C3.149 18.6667 3 18.5173 3 18.3333C3 18.1493 3.149 18 3.33333 18H4C4.18433 18 4.33333 18.1493 4.33333 18.3333C4.33333 18.5173 4.18433 18.6667 4 18.6667ZM2.33333 17.3333H1.66667C1.48233 17.3333 1.33333 17.184 1.33333 17C1.33333 16.816 1.48233 16.6667 1.66667 16.6667H2.33333C2.51767 16.6667 2.66667 16.816 2.66667 17C2.66667 17.184 2.51767 17.3333 2.33333 17.3333ZM16.5077 3.99133C18.4483 3.89933 20 2.29633 20 0.333333V0H19.6667C17.6843 0 16.0687 1.58233 16.006 3.54933C15.6637 4.00133 15.4303 4.61267 15.246 5.19267C15.0927 4.318 14.8943 3.493 14.6437 2.77033C14.8563 1.993 15.291 1.175 15.5667 0.904667C15.6983 0.775667 15.7003 0.564667 15.5713 0.433333C15.4417 0.301333 15.2307 0.299667 15.1 0.428667C14.8197 0.703333 14.5043 1.24867 14.2607 1.84C14.0597 1.42533 13.8353 1.06433 13.583 0.779C13.4617 0.641333 13.2503 0.628667 13.1127 0.750333C12.9747 0.872333 12.9617 1.083 13.0837 1.221C13.5007 1.69233 13.8373 2.41133 14.1057 3.27633C13.8013 3.025 13.4573 2.79533 13.1007 2.68233C12.9243 2.62567 12.738 2.724 12.6823 2.89933C12.6267 3.075 12.724 3.26233 12.8993 3.31767C13.4403 3.489 14.045 4.10967 14.3693 4.443L14.4223 4.49633C14.6057 5.35233 14.7403 6.28833 14.8313 7.24133C14.676 7.107 14.5137 6.97867 14.357 6.85633L14.3317 6.83667C14.3067 5.26267 13.0577 3.95667 11.465 3.888L11.132 3.87367L11.1177 4.20667C11.048 5.82033 12.274 7.192 13.8707 7.32233L13.9467 7.382C14.317 7.67133 14.7693 8.027 14.9193 8.353C14.997 9.608 15.005 10.8453 14.9593 11.9207C14.7513 11.7373 14.5297 11.5557 14.296 11.377C14.0527 10.476 13.49 9.71167 12.6937 9.21767C11.8617 8.70133 10.8773 8.541 9.92367 8.76433L9.59933 8.84033L9.67533 9.165C9.899 10.119 10.48 10.929 11.3123 11.4447C11.8993 11.8093 12.5623 11.9967 13.237 11.9967C13.4633 11.9967 13.6907 11.9697 13.9173 11.927C14.2833 12.2083 14.6153 12.4957 14.9083 12.7843C14.8663 13.3317 14.8083 13.8123 14.7377 14.2027C14.3977 14.0727 14.0357 14 13.6667 14C13.26 14 12.894 14.0627 12.5583 14.191C12.239 13.2867 11.3643 12.6667 10.3333 12.6667C9.62167 12.6667 9.04633 13.1153 8.76633 13.3827C8.64567 13.4983 8.46567 13.5267 8.319 13.4533C8.13967 13.3637 7.93867 13.3277 7.734 13.346C7.259 13.391 6.81233 13.5473 6.463 13.7817C6.46 13.7757 6.45633 13.7707 6.453 13.765C6.62433 12.718 6.71167 11.2697 6.68333 9.701C6.83533 9.393 7.27 9.05433 7.62733 8.77767L7.74933 8.68267C9.34567 8.553 10.5727 7.181 10.5033 5.56733L10.489 5.23433L10.156 5.24867C9.35467 5.283 8.61533 5.627 8.074 6.217C7.57267 6.76333 7.29967 7.46067 7.28867 8.19633L7.21933 8.25033C7.03067 8.39633 6.833 8.55033 6.65033 8.71433C6.618 8.04667 6.565 7.36967 6.488 6.702C6.577 6.48133 6.65933 6.20233 6.75133 5.88167C6.93267 5.251 7.157 4.481 7.508 3.99133C9.44867 3.899 11 2.29633 11 0.333333V0H10.6667C8.68433 0 7.06833 1.58233 7.006 3.54967C6.66867 3.99667 6.44233 4.599 6.26567 5.17233C6.10933 4.301 5.90567 3.48033 5.64967 2.75833C5.863 1.97667 6.287 1.179 6.56667 0.904667C6.69833 0.775667 6.70033 0.564667 6.57133 0.433333C6.44167 0.301333 6.23067 0.299667 6.1 0.428667C5.821 0.702 5.507 1.24533 5.26467 1.834C5.06233 1.42333 4.836 1.06533 4.583 0.779C4.46167 0.641333 4.25033 0.628667 4.11267 0.750333C3.97467 0.872333 3.96167 1.083 4.08367 1.221C4.48467 1.674 4.835 2.37733 5.12467 3.28567C4.81267 3.031 4.45867 2.79567 4.10067 2.68233C3.92467 2.62567 3.738 2.724 3.68233 2.89933C3.62667 3.075 3.724 3.26233 3.89933 3.31767C4.45467 3.49367 5.07833 4.12733 5.41333 4.468L5.449 4.50367C5.62333 5.292 5.763 6.18167 5.861 7.16167C5.86467 7.19667 5.86733 7.23233 5.87067 7.26733C5.717 7.13567 5.55633 7.01 5.40133 6.89L5.33167 6.836C5.30633 5.26233 4.05733 3.95667 2.465 3.888L2.132 3.87367L2.11767 4.20667C2.048 5.82067 3.27467 7.19233 4.87133 7.32233L4.99333 7.41733C5.36733 7.70633 5.826 8.063 5.95667 8.382C5.98167 8.80133 5.99833 9.223 6.007 9.641C6.005 9.668 6.00467 9.694 6.00867 9.72C6.03167 10.9307 5.98767 12.0997 5.87867 13.051C5.551 12.796 5.15 12.6667 4.66667 12.6667C3.40033 12.6667 2.486 13.4817 2.35067 14.6853C1.045 14.8403 0.0253333 15.9453 0.003 17.2887C0.001 17.3033 0 17.3183 0 17.3333V19.6667C0 19.8507 0.149 20 0.333333 20H19.6667C19.851 20 20 19.8507 20 19.6667V17.3333C20 17.3183 19.999 17.3033 19.997 17.2887C19.9727 15.8387 18.787 14.6667 17.3333 14.6667C16.8977 14.6667 16.4653 14.7747 16.0827 14.979C16.0063 15.0203 15.9103 15.007 15.8557 14.9487C15.7043 14.7873 15.5353 14.646 15.3547 14.5233C15.695 12.9053 15.8037 9.69433 15.463 6.70333C15.5507 6.487 15.6337 6.21367 15.7273 5.89967C15.9167 5.26333 16.1513 4.486 16.5077 3.99133Z" fill="#FE753F"/>
+                                    </svg>
+                                </div>
+                                <h3 class="Property-box__title">Flower garden</h3>
+                                <p class="Property-box__text">For many of us, buying a home is a dre and one not easily attainable. </p>
+                            </div>
+                        </div>
+                        <div class="Home-Property__img-wrapper">
+                            <img class="Home-Property__img" src="images/Rectangle 134.png" alt="img">
+                        </div>
+                        <div class="Home-Property__box-wrapper">
+                            <div class="Property-box">
+                                <div class="Property-box__icon-wrapper">
+                                    <svg width="22" height="17" viewBox="0 0 22 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M1.01852 8.63939L1.79259 6.88754H1.05926C0.244444 6.48013 0 5.95051 0 5.09495L2.56667 5.13569L4.23704 1.3468C4.97037 0.450506 5.66296 -0.0383833 6.23333 0.00235743C9.45185 0.0430982 12.5889 0.0430982 15.7667 0.00235743C16.337 -0.0383833 17.0296 0.450506 17.763 1.3468L19.4333 5.13569L22 5.09495C22 5.95051 21.7556 6.48013 20.9407 6.88754H20.2074L20.9815 8.63939C20.9815 11.0838 20.9815 13.4875 20.9815 15.932C20.9815 16.4209 20.5741 16.8283 20.0852 16.8283H17.0296C16.5407 16.8283 16.1333 16.4209 16.1333 15.932V13.8542H5.86667V15.932C5.86667 16.4209 5.45926 16.8283 4.97037 16.8283H1.91481C1.42593 16.8283 1.01852 16.4209 1.01852 15.932C1.01852 13.4875 1.01852 11.0838 1.01852 8.63939ZM6.43704 1.55051C6.15185 1.59125 5.86667 1.83569 5.54074 2.20236C4.97037 3.46532 4.35926 4.68754 3.78889 5.95051H18.2519C17.6407 4.68754 17.0296 3.46532 16.4593 2.20236C16.1333 1.83569 15.8481 1.59125 15.563 1.55051H6.43704ZM8.55556 10.1061C8.14815 10.1061 7.86296 10.432 7.86296 10.8394C7.86296 11.2468 8.14815 11.5727 8.55556 11.5727H13.4444C13.8519 11.5727 14.1778 11.2468 14.1778 10.8394C14.1778 10.432 13.8519 10.1061 13.4444 10.1061H8.55556ZM18.0889 8.8431C17.3148 8.8431 16.663 9.45421 16.663 10.269C16.663 11.0838 17.3148 11.6949 18.0889 11.6949C18.9037 11.6949 19.5556 11.0838 19.5556 10.269C19.5556 9.45421 18.9037 8.8431 18.0889 8.8431ZM3.91111 8.8431C4.68518 8.8431 5.33704 9.45421 5.33704 10.269C5.33704 11.0838 4.68518 11.6949 3.91111 11.6949C3.0963 11.6949 2.44444 11.0838 2.44444 10.269C2.44444 9.45421 3.0963 8.8431 3.91111 8.8431Z" fill="#FE753F"/>
+                                    </svg>
+                                </div>
+                                <h3 class="Property-box__title">Parkers & movers</h3>
+                                <p class="Property-box__text">For many of us, buying a home is a dre and one not easily attainable. </p>
+                            </div>
+                            <div class="Property-box">
+                                <div class="Property-box__icon-wrapper">
+                                    <svg width="24" height="14" viewBox="0 0 24 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M5.54679 5.32198V6.89609H11.2685V0H4.49738C3.67285 0 2.99823 0.674618 2.99823 1.49915V3.3481H3.54792C4.67228 3.3481 5.54679 4.22261 5.54679 5.32198Z" fill="#FE753F"/>
+                                        <path d="M18.1896 5.32198C18.1896 4.22261 19.0891 3.3481 20.1635 3.3481H20.7132V1.49915C20.7132 0.674618 20.0386 0 19.214 0H12.4679V6.89609H18.1896V5.32198Z" fill="#FE753F"/>
+                                        <path d="M21.7627 4.52246H20.1636C19.7138 4.52246 19.364 4.87226 19.364 5.32201V7.84558C19.364 7.99549 19.2641 8.09544 19.1142 8.09544H4.62238C4.47246 8.09544 4.37252 7.99549 4.37252 7.84558V5.32201C4.37252 4.87226 4.02272 4.52246 3.57297 4.52246H1.97388C0.89949 4.52246 0 5.39696 0 6.49634C0 7.57073 0.874504 8.47022 1.97388 8.47022V10.4691C1.97388 11.2686 2.59853 11.9183 3.37309 11.9433V12.7428C3.37309 13.0676 3.64793 13.3425 3.97275 13.3425H5.34697C5.67178 13.3425 5.94663 13.0676 5.94663 12.7428V11.9433H17.8399V12.7428C17.8399 13.0676 18.1147 13.3425 18.4395 13.3425H19.8138C20.1386 13.3425 20.4134 13.0676 20.4134 12.7428V11.9183C21.188 11.8683 21.8126 11.2436 21.8126 10.4441V8.44524C22.887 8.44524 23.7865 7.57073 23.7865 6.47136C23.7365 5.39696 22.862 4.52246 21.7627 4.52246Z" fill="#FE753F"/>
+                                    </svg>
+                                </div>
+                                <h3 class="Property-box__title">Rental furniture</h3>
+                                <p class="Property-box__text">For many of us, buying a home is a dre and one not easily attainable. </p>
+                            </div>
+                            <div class="Property-box">
+                                <div class="Property-box__icon-wrapper">
+                                    <svg width="28" height="13" viewBox="0 0 28 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M20.5038 5.92668C21.9561 6.09668 23.2711 5.05702 23.4411 3.60449C23.6109 2.15237 22.5714 0.837258 21.1189 0.667375C19.6666 0.497374 18.3515 1.53703 18.182 2.98945C18.0116 4.44187 19.0515 5.7568 20.5038 5.92668Z" fill="#FE753F"/>
+                                        <path d="M8.97227 3.77349L12.9106 2.98703L13.7575 4.34905L10.6892 7.26669C11.1629 7.38642 11.6179 7.56462 12.0409 7.79776C12.2438 7.90958 12.4339 8.03875 12.6177 8.16355C12.9138 8.36465 13.1925 8.55819 13.4686 8.63402C13.687 8.69397 13.9732 8.69739 13.9914 8.69845C14.3803 8.69509 14.7231 8.58687 15.0729 8.3588C15.9826 7.7656 17.0993 7.15109 18.4843 7.09025C18.5865 7.08577 18.6897 7.08347 18.7913 7.08347C19.2356 7.08347 19.67 7.12713 20.0854 7.21175C19.8004 6.75674 14.7228 0.603587 14.7228 0.603587L14.5889 0.443499C14.2613 0.0540479 13.7129 -0.108872 13.2073 0.0764123L8.42551 1.8303C7.96448 1.99889 7.68224 2.48275 7.78126 2.97901C7.89078 3.52719 8.42403 3.88289 8.97227 3.77349Z" fill="#FE753F"/>
+                                        <path d="M26.3799 9.89107C25.728 10.1833 25.2421 10.3025 24.7025 10.3025C24.49 10.3025 24.2701 10.2835 24.0302 10.2442C23.2313 10.1018 22.6619 9.64046 22.1111 9.1943C21.7724 8.91992 21.4525 8.66069 21.0824 8.46986C20.4125 8.1226 19.607 7.93915 18.7521 7.93915C18.6634 7.93915 18.5732 7.94121 18.484 7.94517C17.3151 7.99644 16.3673 8.51648 15.517 9.0708C15.0182 9.39617 14.4265 9.5523 13.8896 9.5523C13.7277 9.5523 13.398 9.51678 13.1841 9.45506C12.7736 9.33669 12.4216 9.09753 12.0812 8.86646C11.9064 8.74761 11.7412 8.6355 11.5743 8.5435C10.8598 8.14957 10.0347 7.94133 9.18831 7.94133H9.17114C7.98614 7.94523 6.91444 8.30865 6.07205 8.99208C4.89903 9.94406 4.12491 10.2115 3.90422 10.2492C3.90422 10.2492 3.71911 10.2976 3.32164 10.2976C2.5602 10.2976 1.92386 10.0482 1.28516 9.77045C0.836466 9.57531 0.413616 9.46332 3.05176e-05 9.43069C0.0802221 9.47701 0.156991 9.52539 0.231459 9.5765C0.555648 9.8025 0.822481 10.0772 1.0804 10.3429C1.21848 10.485 1.34883 10.6193 1.48732 10.7467C2.02954 11.2455 3.14863 11.8351 4.43665 11.8351C5.09022 11.8351 5.72261 11.693 6.31605 11.4126C6.49065 11.3301 6.66065 11.2319 6.84057 11.128C7.13909 10.9557 7.44917 10.782 7.79278 10.6663C8.22637 10.5202 8.89941 10.5686 8.89941 10.5686C9.59723 10.6132 10.1198 10.9429 10.4971 11.2252C11.6466 12.085 12.7311 12.4908 13.9101 12.5023L13.9702 12.5026C14.7814 12.5026 15.5236 12.3463 16.1763 12.0379C16.4803 11.8942 16.7697 11.6828 17.0763 11.4589C17.652 11.0384 18.2474 10.6034 19.0141 10.5733C19.0597 10.5715 19.1061 10.5705 19.1532 10.5705C19.573 10.5705 20.2052 10.6435 20.8326 10.991C21.5879 11.4107 22.5015 11.8396 23.5557 11.8396C23.7089 11.8396 23.8653 11.8306 24.0204 11.8131C24.9908 11.7033 25.8109 11.3455 26.4582 10.7497C26.597 10.6221 26.7276 10.4873 26.8659 10.3448C27.161 10.0409 27.4659 9.72655 27.8512 9.48792C27.8801 9.46993 27.9091 9.45252 27.9384 9.43558C27.4728 9.47701 26.9795 9.62217 26.3799 9.89107Z" fill="#FE753F"/>
+                                    </svg>
+                                </div>
+                                <h3 class="Property-box__title">Swimming pool</h3>
+                                <p class="Property-box__text">For many of us, buying a home is a dre and one not easily attainable. </p>
+                            </div>
+                        </div>
+                   </div>
+                </div>
+            </div>
+        </section>
+        <!--//// section customer ////-->
+        <section>
+            <div class="container">
+                <div class="customer">
+                    <div class="customer__header">
+                        <span class="customer__header-text">REVIEWS</span>
+                        <h2 class="section-title">Our valuable customer says</h2>
+                        <svg class="customer__header-shap" width="50" height="64" viewBox="0 0 50 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g opacity="0.1">
+                            <path d="M11.7734 63.9319H16.5135C17.1309 63.9319 17.6158 63.4468 17.6158 62.8296V52.0484C17.6158 48.0137 20.879 44.7507 24.9135 44.7507C26.8537 44.7507 28.6837 45.5223 30.0727 46.8892C31.4396 48.2782 32.2112 50.1082 32.2112 52.0484V62.8296C32.2112 63.4468 32.6963 63.9319 33.3136 63.9319H38.0538C44.5357 63.9319 49.827 58.6405 49.827 52.1586V22.6371C49.827 22.3286 49.6947 22.0199 49.4743 21.8214L25.6632 0.281176C25.2443 -0.0937252 24.5829 -0.0937252 24.164 0.281176L0.352705 21.8214C0.132279 22.0199 0 22.3285 0 22.6371V52.1586C0 58.6405 5.29143 63.9319 11.7734 63.9319Z" fill="#FE753F"/>
+                            <rect x="13.9186" y="35.2305" width="24.7204" height="28.7694" fill="#FE753F"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="customer__content">
+                        <!-- Slider main container -->
+                            <div class="swiper">
+                                <!-- Additional required wrapper -->
+                                <div class="swiper-wrapper">
+                                <!-- Slides -->
+                                    
+                                    <div class="swiper-slide">
+                                        <div class="customer__box">
+                                                <div class="customer__box-header">
+                                                    <div class="customer__box-user-profile">
+                                                        <img src="images/Ellipse 11.png" alt="user-img">
+                                                        <div class="customer__box-user-info">
+                                                            <h3 class="customer__box-user-name">Justin Lee</h3>
+                                                            <p class="customer__box-user-job">Products Designer at Ito</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="customer__box-icon-wrapper">
+                                                        <svg class="customer__box-icon" viewBox="0 0 64 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M38.2887 46.0102C36.6882 46.6814 36.017 48.5917 36.7398 50.1405L39.2696 55.4583C39.9924 56.9551 41.7478 57.6268 43.2967 56.9551C47.6852 55.0964 51.4541 52.6698 54.4486 49.727C58.1143 46.2683 60.5925 42.2929 61.9348 37.9044C63.2772 33.4638 64 27.4237 64 19.731L64 3.88083C64 2.17706 62.606 0.783077 60.9023 0.783077L40.612 0.783075C38.9082 0.783075 37.5143 2.17706 37.5143 3.88082L37.5142 24.1711C37.5142 25.8754 38.9082 27.2688 40.612 27.2688L50.3183 27.2688C50.215 32.4839 48.9759 36.6653 46.7042 39.8152C44.8456 42.344 42.0576 44.4092 38.2887 46.0102Z" fill="rgba(46, 110, 255, 0.1)"/>
+                                                            <path d="M1.83712 46.0093C0.236615 46.6805 -0.434047 48.5908 0.288245 50.1397L2.81807 55.4053C3.54088 56.9026 5.29627 57.5737 6.84515 56.9026C11.182 55.0439 14.8998 52.6173 17.9454 49.7261C21.6116 46.2153 24.1409 42.2399 25.4838 37.8514C26.8261 33.5151 27.4968 27.474 27.4968 19.7296L27.4968 3.87943C27.4968 2.17567 26.1028 0.781685 24.3991 0.781685L4.10881 0.781683C2.40504 0.781683 1.01106 2.17567 1.01106 3.87943L1.01106 24.1697C1.01106 25.874 2.40504 27.2674 4.1088 27.2674L13.8667 27.2674C13.7634 32.4825 12.5238 36.6639 10.2527 39.8138C8.39402 42.3431 5.60605 44.4083 1.83712 46.0093Z" fill="rgba(46, 110, 255, 0.1)"/>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <p class="customer__box-caption">
+                                                    A good real estate agent doesn’t disappear once the closing IN signed.Buying a bigger home doesn’t necessarily mean spendi more money.Been there. Done that. Sold. Bought 
+                                                    Bringing It All Together.
+                                                </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="swiper-slide">
+                                        <div class="customer__box">
+                                            <div class="customer__box-header">
+                                                <div class="customer__box-user-profile">
+                                                    <img src="images/Ellipse 27.png" class="customer__box-user-img" alt="user-img">
+                                                    <div class="customer__box-user-info">
+                                                        <h3 class="customer__box-user-name">Starla Virgoun</h3>
+                                                        <p class="customer__box-user-job">Products Designer at Ito</p>
+                                                    </div>
+                                                </div>
+                                                <div class="customer__box-icon-wrapper">
+                                                    <svg class="customer__box-icon" viewBox="0 0 64 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M38.2887 46.0102C36.6882 46.6814 36.017 48.5917 36.7398 50.1405L39.2696 55.4583C39.9924 56.9551 41.7478 57.6268 43.2967 56.9551C47.6852 55.0964 51.4541 52.6698 54.4486 49.727C58.1143 46.2683 60.5925 42.2929 61.9348 37.9044C63.2772 33.4638 64 27.4237 64 19.731L64 3.88083C64 2.17706 62.606 0.783077 60.9023 0.783077L40.612 0.783075C38.9082 0.783075 37.5143 2.17706 37.5143 3.88082L37.5142 24.1711C37.5142 25.8754 38.9082 27.2688 40.612 27.2688L50.3183 27.2688C50.215 32.4839 48.9759 36.6653 46.7042 39.8152C44.8456 42.344 42.0576 44.4092 38.2887 46.0102Z" fill="rgba(46, 110, 255, 0.1)"/>
+                                                        <path d="M1.83712 46.0093C0.236615 46.6805 -0.434047 48.5908 0.288245 50.1397L2.81807 55.4053C3.54088 56.9026 5.29627 57.5737 6.84515 56.9026C11.182 55.0439 14.8998 52.6173 17.9454 49.7261C21.6116 46.2153 24.1409 42.2399 25.4838 37.8514C26.8261 33.5151 27.4968 27.474 27.4968 19.7296L27.4968 3.87943C27.4968 2.17567 26.1028 0.781685 24.3991 0.781685L4.10881 0.781683C2.40504 0.781683 1.01106 2.17567 1.01106 3.87943L1.01106 24.1697C1.01106 25.874 2.40504 27.2674 4.1088 27.2674L13.8667 27.2674C13.7634 32.4825 12.5238 36.6639 10.2527 39.8138C8.39402 42.3431 5.60605 44.4083 1.83712 46.0093Z" fill="rgba(46, 110, 255, 0.1)"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <p class="customer__box-caption">
+                                                A good real estate agent doesn’t disappear once the closing IN signed.Buying a bigger home doesn’t necessarily mean spendi more money.Been there. Done that. Sold. Bought 
+                                                Bringing It All Together.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="swiper-slide">
+                                        <div class="customer__box">
+                                            <div class="customer__box-header">
+                                                <div class="customer__box-user-profile">
+                                                    <img src="images/Ellipse 20.png" class="customer__box-user-img" alt="user-img">
+                                                    <div class="customer__box-user-info">
+                                                        <h3 class="customer__box-user-name">Ferry Sauwi</h3>
+                                                        <p class="customer__box-user-job">Products Designer at Ito</p>
+                                                    </div>
+                                                </div>
+                                                <div class="customer__box-icon-wrapper">
+                                                    <svg class="customer__box-icon" viewBox="0 0 64 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M38.2887 46.0102C36.6882 46.6814 36.017 48.5917 36.7398 50.1405L39.2696 55.4583C39.9924 56.9551 41.7478 57.6268 43.2967 56.9551C47.6852 55.0964 51.4541 52.6698 54.4486 49.727C58.1143 46.2683 60.5925 42.2929 61.9348 37.9044C63.2772 33.4638 64 27.4237 64 19.731L64 3.88083C64 2.17706 62.606 0.783077 60.9023 0.783077L40.612 0.783075C38.9082 0.783075 37.5143 2.17706 37.5143 3.88082L37.5142 24.1711C37.5142 25.8754 38.9082 27.2688 40.612 27.2688L50.3183 27.2688C50.215 32.4839 48.9759 36.6653 46.7042 39.8152C44.8456 42.344 42.0576 44.4092 38.2887 46.0102Z" fill="rgba(46, 110, 255, 0.1)"/>
+                                                        <path d="M1.83712 46.0093C0.236615 46.6805 -0.434047 48.5908 0.288245 50.1397L2.81807 55.4053C3.54088 56.9026 5.29627 57.5737 6.84515 56.9026C11.182 55.0439 14.8998 52.6173 17.9454 49.7261C21.6116 46.2153 24.1409 42.2399 25.4838 37.8514C26.8261 33.5151 27.4968 27.474 27.4968 19.7296L27.4968 3.87943C27.4968 2.17567 26.1028 0.781685 24.3991 0.781685L4.10881 0.781683C2.40504 0.781683 1.01106 2.17567 1.01106 3.87943L1.01106 24.1697C1.01106 25.874 2.40504 27.2674 4.1088 27.2674L13.8667 27.2674C13.7634 32.4825 12.5238 36.6639 10.2527 39.8138C8.39402 42.3431 5.60605 44.4083 1.83712 46.0093Z" fill="rgba(46, 110, 255, 0.1)"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <p class="customer__box-caption">
+                                                A good real estate agent doesn’t disappear once the closing IN signed.Buying a bigger home doesn’t necessarily mean spendi more money.Been there. Done that. Sold. Bought 
+                                                Bringing It All Together.
+                                            </p>
+                                        </div> 
+                                    </div>
+
+                                    <div class="swiper-slide">
+                                        <div class="customer__box">
+                                            <div class="customer__box-header">
+                                                <div class="customer__box-user-profile">
+                                                    <img src="images/Ellipse 19.png" class="customer__box-user-img" alt="user-img">
+                                                    <div class="customer__box-user-info">
+                                                        <h3 class="customer__box-user-name">Stellan Skarsgård</h3>
+                                                        <p class="customer__box-user-job">Products Designer at Ito</p>
+                                                    </div>
+                                                </div>
+                                                <div class="customer__box-icon-wrapper">
+                                                    <svg class="customer__box-icon" viewBox="0 0 64 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M38.2887 46.0102C36.6882 46.6814 36.017 48.5917 36.7398 50.1405L39.2696 55.4583C39.9924 56.9551 41.7478 57.6268 43.2967 56.9551C47.6852 55.0964 51.4541 52.6698 54.4486 49.727C58.1143 46.2683 60.5925 42.2929 61.9348 37.9044C63.2772 33.4638 64 27.4237 64 19.731L64 3.88083C64 2.17706 62.606 0.783077 60.9023 0.783077L40.612 0.783075C38.9082 0.783075 37.5143 2.17706 37.5143 3.88082L37.5142 24.1711C37.5142 25.8754 38.9082 27.2688 40.612 27.2688L50.3183 27.2688C50.215 32.4839 48.9759 36.6653 46.7042 39.8152C44.8456 42.344 42.0576 44.4092 38.2887 46.0102Z" fill="rgba(46, 110, 255, 0.1)"/>
+                                                        <path d="M1.83712 46.0093C0.236615 46.6805 -0.434047 48.5908 0.288245 50.1397L2.81807 55.4053C3.54088 56.9026 5.29627 57.5737 6.84515 56.9026C11.182 55.0439 14.8998 52.6173 17.9454 49.7261C21.6116 46.2153 24.1409 42.2399 25.4838 37.8514C26.8261 33.5151 27.4968 27.474 27.4968 19.7296L27.4968 3.87943C27.4968 2.17567 26.1028 0.781685 24.3991 0.781685L4.10881 0.781683C2.40504 0.781683 1.01106 2.17567 1.01106 3.87943L1.01106 24.1697C1.01106 25.874 2.40504 27.2674 4.1088 27.2674L13.8667 27.2674C13.7634 32.4825 12.5238 36.6639 10.2527 39.8138C8.39402 42.3431 5.60605 44.4083 1.83712 46.0093Z" fill="rgba(46, 110, 255, 0.1)"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <p class="customer__box-caption">
+                                                A good real estate agent doesn’t disappear once the closing IN signed.Buying a bigger home doesn’t necessarily mean spendi more money.Been there. Done that. Sold. Bought 
+                                                Bringing It All Together.
+                                            </p>
+                                        </div> 
+                                    </div> 
+
+                                    <div class="swiper-slide">
+                                        <div class="customer__box">
+                                            <div class="customer__box-header">
+                                                <div class="customer__box-user-profile">
+                                                    <img src="images/Ellipse 11 (1).png" alt="user-img">
+                                                    <div class="customer__box-user-info">
+                                                        <h3 class="customer__box-user-name">Angel Cathe</h3>
+                                                        <p class="customer__box-user-job">Products Designer at Ito</p>
+                                                    </div>
+                                                </div>
+                                                <div class="customer__box-icon-wrapper">
+                                                    <svg class="customer__box-icon" viewBox="0 0 64 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M38.2887 46.0102C36.6882 46.6814 36.017 48.5917 36.7398 50.1405L39.2696 55.4583C39.9924 56.9551 41.7478 57.6268 43.2967 56.9551C47.6852 55.0964 51.4541 52.6698 54.4486 49.727C58.1143 46.2683 60.5925 42.2929 61.9348 37.9044C63.2772 33.4638 64 27.4237 64 19.731L64 3.88083C64 2.17706 62.606 0.783077 60.9023 0.783077L40.612 0.783075C38.9082 0.783075 37.5143 2.17706 37.5143 3.88082L37.5142 24.1711C37.5142 25.8754 38.9082 27.2688 40.612 27.2688L50.3183 27.2688C50.215 32.4839 48.9759 36.6653 46.7042 39.8152C44.8456 42.344 42.0576 44.4092 38.2887 46.0102Z" fill="rgba(46, 110, 255, 0.1)"/>
+                                                        <path d="M1.83712 46.0093C0.236615 46.6805 -0.434047 48.5908 0.288245 50.1397L2.81807 55.4053C3.54088 56.9026 5.29627 57.5737 6.84515 56.9026C11.182 55.0439 14.8998 52.6173 17.9454 49.7261C21.6116 46.2153 24.1409 42.2399 25.4838 37.8514C26.8261 33.5151 27.4968 27.474 27.4968 19.7296L27.4968 3.87943C27.4968 2.17567 26.1028 0.781685 24.3991 0.781685L4.10881 0.781683C2.40504 0.781683 1.01106 2.17567 1.01106 3.87943L1.01106 24.1697C1.01106 25.874 2.40504 27.2674 4.1088 27.2674L13.8667 27.2674C13.7634 32.4825 12.5238 36.6639 10.2527 39.8138C8.39402 42.3431 5.60605 44.4083 1.83712 46.0093Z" fill="rgba(46, 110, 255, 0.1)"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <p class="customer__box-caption">
+                                                A good real estate agent doesn’t disappear once the closing IN signed.Buying a bigger home doesn’t necessarily mean spendi more money.Been there. Done that. Sold. Bought 
+                                                Bringing It All Together.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="swiper-slide">
+                                        <div class="customer__box">
+                                            <div class="customer__box-header">
+                                                <div class="customer__box-user-profile">
+                                                    <img src="images/Ellipse 17.png" class="customer__box-user-img" alt="user-img">
+                                                    <div class="customer__box-user-info">
+                                                        <h3 class="customer__box-user-name">Betran Komar</h3>
+                                                        <p class="customer__box-user-job">Products Designer at Ito</p>
+                                                    </div>
+                                                </div>
+                                                <div class="customer__box-icon-wrapper">
+                                                    <svg class="customer__box-icon" viewBox="0 0 64 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M38.2887 46.0102C36.6882 46.6814 36.017 48.5917 36.7398 50.1405L39.2696 55.4583C39.9924 56.9551 41.7478 57.6268 43.2967 56.9551C47.6852 55.0964 51.4541 52.6698 54.4486 49.727C58.1143 46.2683 60.5925 42.2929 61.9348 37.9044C63.2772 33.4638 64 27.4237 64 19.731L64 3.88083C64 2.17706 62.606 0.783077 60.9023 0.783077L40.612 0.783075C38.9082 0.783075 37.5143 2.17706 37.5143 3.88082L37.5142 24.1711C37.5142 25.8754 38.9082 27.2688 40.612 27.2688L50.3183 27.2688C50.215 32.4839 48.9759 36.6653 46.7042 39.8152C44.8456 42.344 42.0576 44.4092 38.2887 46.0102Z" fill="rgba(46, 110, 255, 0.1)"/>
+                                                        <path d="M1.83712 46.0093C0.236615 46.6805 -0.434047 48.5908 0.288245 50.1397L2.81807 55.4053C3.54088 56.9026 5.29627 57.5737 6.84515 56.9026C11.182 55.0439 14.8998 52.6173 17.9454 49.7261C21.6116 46.2153 24.1409 42.2399 25.4838 37.8514C26.8261 33.5151 27.4968 27.474 27.4968 19.7296L27.4968 3.87943C27.4968 2.17567 26.1028 0.781685 24.3991 0.781685L4.10881 0.781683C2.40504 0.781683 1.01106 2.17567 1.01106 3.87943L1.01106 24.1697C1.01106 25.874 2.40504 27.2674 4.1088 27.2674L13.8667 27.2674C13.7634 32.4825 12.5238 36.6639 10.2527 39.8138C8.39402 42.3431 5.60605 44.4083 1.83712 46.0093Z" fill="rgba(46, 110, 255, 0.1)"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <p class="customer__box-caption">
+                                                A good real estate agent doesn’t disappear once the closing IN signed.Buying a bigger home doesn’t necessarily mean spendi more money.Been there. Done that. Sold. Bought 
+                                                Bringing It All Together.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="swiper-slide">
+                                        <div class="customer__box">
+                                            <div class="customer__box-header">
+                                                <div class="customer__box-user-profile">
+                                                    <img src="images/Ellipse 16.png" class="customer__box-user-img" alt="user-img">
+                                                    <div class="customer__box-user-info">
+                                                        <h3 class="customer__box-user-name">Iswan Dracho</h3>
+                                                        <p class="customer__box-user-job">Products Designer at Ito</p>
+                                                    </div>
+                                                </div>
+                                                <div class="customer__box-icon-wrapper">
+                                                    <svg class="customer__box-icon" viewBox="0 0 64 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M38.2887 46.0102C36.6882 46.6814 36.017 48.5917 36.7398 50.1405L39.2696 55.4583C39.9924 56.9551 41.7478 57.6268 43.2967 56.9551C47.6852 55.0964 51.4541 52.6698 54.4486 49.727C58.1143 46.2683 60.5925 42.2929 61.9348 37.9044C63.2772 33.4638 64 27.4237 64 19.731L64 3.88083C64 2.17706 62.606 0.783077 60.9023 0.783077L40.612 0.783075C38.9082 0.783075 37.5143 2.17706 37.5143 3.88082L37.5142 24.1711C37.5142 25.8754 38.9082 27.2688 40.612 27.2688L50.3183 27.2688C50.215 32.4839 48.9759 36.6653 46.7042 39.8152C44.8456 42.344 42.0576 44.4092 38.2887 46.0102Z" fill="rgba(46, 110, 255, 0.1)"/>
+                                                        <path d="M1.83712 46.0093C0.236615 46.6805 -0.434047 48.5908 0.288245 50.1397L2.81807 55.4053C3.54088 56.9026 5.29627 57.5737 6.84515 56.9026C11.182 55.0439 14.8998 52.6173 17.9454 49.7261C21.6116 46.2153 24.1409 42.2399 25.4838 37.8514C26.8261 33.5151 27.4968 27.474 27.4968 19.7296L27.4968 3.87943C27.4968 2.17567 26.1028 0.781685 24.3991 0.781685L4.10881 0.781683C2.40504 0.781683 1.01106 2.17567 1.01106 3.87943L1.01106 24.1697C1.01106 25.874 2.40504 27.2674 4.1088 27.2674L13.8667 27.2674C13.7634 32.4825 12.5238 36.6639 10.2527 39.8138C8.39402 42.3431 5.60605 44.4083 1.83712 46.0093Z" fill="rgba(46, 110, 255, 0.1)"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <p class="customer__box-caption">
+                                                A good real estate agent doesn’t disappear once the closing IN signed.Buying a bigger home doesn’t necessarily mean spendi more money.Been there. Done that. Sold. Bought 
+                                                Bringing It All Together.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="swiper-slide">
+                                        <div class="customer__box">
+                                            <div class="customer__box-header">
+                                                <div class="customer__box-user-profile">
+                                                    <img src="images/Ellipse 21.png" class="customer__box-user-img" alt="user-img">
+                                                    <div class="customer__box-user-info">
+                                                        <h3 class="customer__box-user-name">Jenny Agutter</h3>
+                                                        <p class="customer__box-user-job">Products Designer at Ito</p>
+                                                    </div>
+                                                </div>
+                                                <div class="customer__box-icon-wrapper">
+                                                    <svg class="customer__box-icon" viewBox="0 0 64 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M38.2887 46.0102C36.6882 46.6814 36.017 48.5917 36.7398 50.1405L39.2696 55.4583C39.9924 56.9551 41.7478 57.6268 43.2967 56.9551C47.6852 55.0964 51.4541 52.6698 54.4486 49.727C58.1143 46.2683 60.5925 42.2929 61.9348 37.9044C63.2772 33.4638 64 27.4237 64 19.731L64 3.88083C64 2.17706 62.606 0.783077 60.9023 0.783077L40.612 0.783075C38.9082 0.783075 37.5143 2.17706 37.5143 3.88082L37.5142 24.1711C37.5142 25.8754 38.9082 27.2688 40.612 27.2688L50.3183 27.2688C50.215 32.4839 48.9759 36.6653 46.7042 39.8152C44.8456 42.344 42.0576 44.4092 38.2887 46.0102Z" fill="rgba(46, 110, 255, 0.1)"/>
+                                                        <path d="M1.83712 46.0093C0.236615 46.6805 -0.434047 48.5908 0.288245 50.1397L2.81807 55.4053C3.54088 56.9026 5.29627 57.5737 6.84515 56.9026C11.182 55.0439 14.8998 52.6173 17.9454 49.7261C21.6116 46.2153 24.1409 42.2399 25.4838 37.8514C26.8261 33.5151 27.4968 27.474 27.4968 19.7296L27.4968 3.87943C27.4968 2.17567 26.1028 0.781685 24.3991 0.781685L4.10881 0.781683C2.40504 0.781683 1.01106 2.17567 1.01106 3.87943L1.01106 24.1697C1.01106 25.874 2.40504 27.2674 4.1088 27.2674L13.8667 27.2674C13.7634 32.4825 12.5238 36.6639 10.2527 39.8138C8.39402 42.3431 5.60605 44.4083 1.83712 46.0093Z" fill="rgba(46, 110, 255, 0.1)"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <p class="customer__box-caption">
+                                                A good real estate agent doesn’t disappear once the closing IN signed.Buying a bigger home doesn’t necessarily mean spendi more money.Been there. Done that. Sold. Bought 
+                                                Bringing It All Together.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="swiper-pagination">
+
+                                    
+                                </div>
+
+                                <div class="swiper-button-prev-my">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                                    </svg> 
+                                </div>
+                                <div class="swiper-button-next-my">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                                    </svg>    
+                                </div>
+                             
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--//// section user contact ////-->
+        <section>
+            <div class="container">
+                <div class="user-contact">
+                    <h2 class="user-contact__title">Get listed your home as a owner</h2>
+                    <p class="user-contact__text">Here is a list of the greatest real estate company slogans of all-time. These catchy slogans are followed by the Greatest Real Estate.</p>
+                    <div class="user-contact__input-wrapper">
+                        <input class="user-contact__input" placeholder="Enter email address" type="text">
+                        <a class="user-contact__btn" href="#">Subscribe</a>
+                    </div>
+                    <svg class="user-contact__shap1" width="208" height="104" viewBox="0 0 208 104" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path opacity="0.1" d="M208 104C208 76.4175 197.043 49.9647 177.54 30.4609C158.036 10.9571 131.583 2.08242e-06 104 0C76.418 -2.08242e-06 49.9652 10.9571 30.4614 30.4609C10.9576 49.9647 0.000492446 76.4175 0.000488281 104L104 104H208Z"/>
+                    </svg>
+                    <svg class="user-contact__shap2" width="208" height="104" viewBox="0 0 208 104" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path opacity="0.1" d="M208 104C208 76.4175 197.043 49.9647 177.54 30.4609C158.036 10.9571 131.583 2.08242e-06 104 0C76.418 -2.08242e-06 49.9652 10.9571 30.4614 30.4609C10.9576 49.9647 0.000492446 76.4175 0.000488281 104L104 104H208Z"/>
+                    </svg>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- App Footer -->
+     <footer>
+            <div class="container">
+                <div class="footer">
+                    <div class="footer__left">
+                        <svg class="footer__left-logo" width="250" height="65" viewBox="0 0 250 65" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <rect width="250" height="65" fill="url(#pattern0_1_21)"/>
+                            <defs>
+                            <pattern id="pattern0_1_21" patternContentUnits="objectBoundingBox" width="1" height="1">
+                            <use xlink:href="#image0_1_21" transform="scale(0.004 0.0153846)"/>
+                            </pattern>
+                            <image id="image0_1_21" width="250" height="65" xlink:href="data:image/png;base64,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"/>
+                            </defs>
+                        </svg>
+                        <p class="footer__left-text">
+                            Contrary to popular is not simply random text. It has
+                        </p>
+                        <div class="footer__left-icon-wrapper">
+                            <div class="footer__left-icon">
+                                <svg width="6" height="13" viewBox="0 0 6 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4.90459 2.05387H6V0.0871028C5.81102 0.0603019 5.16107 0 4.40413 0C2.82476 0 1.74286 1.0241 1.74286 2.90635V4.63861H0V6.83731H1.74286V12.3696H3.87968V6.83783H5.55204L5.81752 4.63913H3.87918V3.12436C3.87968 2.48887 4.04566 2.05387 4.90459 2.05387Z" fill="white"/>
+                                </svg>
+                            </div>
+                            <div class="footer__left-icon">
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_1_149)">
+                                    <path d="M10 0H2C1.46957 0 0.960859 0.210714 0.585786 0.585786C0.210714 0.960859 0 1.46957 0 2L0 10C0 10.5304 0.210714 11.0391 0.585786 11.4142C0.960859 11.7893 1.46957 12 2 12H10C10.5304 12 11.0391 11.7893 11.4142 11.4142C11.7893 11.0391 12 10.5304 12 10V2C12 1.46957 11.7893 0.960859 11.4142 0.585786C11.0391 0.210714 10.5304 0 10 0V0ZM11 10C11 10.2652 10.8946 10.5196 10.7071 10.7071C10.5196 10.8946 10.2652 11 10 11H2C1.73478 11 1.48043 10.8946 1.29289 10.7071C1.10536 10.5196 1 10.2652 1 10V2C1 1.73478 1.10536 1.48043 1.29289 1.29289C1.48043 1.10536 1.73478 1 2 1H10C10.2652 1 10.5196 1.10536 10.7071 1.29289C10.8946 1.48043 11 1.73478 11 2V10Z" fill="white"/>
+                                    <path d="M5.99997 3C5.40663 3 4.82661 3.17595 4.33326 3.50559C3.83991 3.83524 3.4554 4.30377 3.22833 4.85195C3.00127 5.40013 2.94186 6.00333 3.05761 6.58527C3.17337 7.16721 3.45909 7.70176 3.87865 8.12132C4.29821 8.54088 4.83276 8.8266 5.4147 8.94236C5.99664 9.05811 6.59984 8.9987 7.14802 8.77164C7.6962 8.54458 8.16474 8.16006 8.49438 7.66671C8.82402 7.17336 8.99997 6.59334 8.99997 6C8.99997 5.20435 8.6839 4.44129 8.12129 3.87868C7.55868 3.31607 6.79562 3 5.99997 3ZM5.99997 8C5.60441 8 5.21773 7.8827 4.88883 7.66294C4.55993 7.44318 4.30359 7.13082 4.15221 6.76537C4.00084 6.39992 3.96123 5.99778 4.0384 5.60982C4.11557 5.22186 4.30605 4.86549 4.58576 4.58579C4.86546 4.30608 5.22183 4.1156 5.60979 4.03843C5.99775 3.96126 6.39989 4.00087 6.76534 4.15224C7.13079 4.30362 7.44315 4.55996 7.66291 4.88886C7.88267 5.21776 7.99997 5.60444 7.99997 6C7.99997 6.53043 7.78926 7.03914 7.41419 7.41421C7.03911 7.78929 6.5304 8 5.99997 8Z" fill="white"/>
+                                    <path d="M9.25003 3.5C9.66424 3.5 10 3.16421 10 2.75C10 2.33579 9.66424 2 9.25003 2C8.83582 2 8.50003 2.33579 8.50003 2.75C8.50003 3.16421 8.83582 3.5 9.25003 3.5Z" fill="white"/>
+                                    </g>
+                                    <defs>
+                                    <clipPath id="clip0_1_149">
+                                    <rect width="12" height="12" fill="white"/>
+                                    </clipPath>
+                                    </defs>
+                                </svg>                                    
+                            </div>
+                            <div class="footer__left-icon">
+                                <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M14 1.65913C13.4794 1.8875 12.9246 2.03887 12.3462 2.11237C12.9412 1.75712 13.3954 1.19887 13.6089 0.526C13.0541 0.85675 12.4416 1.09038 11.7889 1.22075C11.2621 0.659875 10.5114 0.3125 9.69238 0.3125C8.10337 0.3125 6.82412 1.60225 6.82412 3.18338C6.82412 3.41088 6.84338 3.62962 6.89062 3.83787C4.5045 3.7215 2.39313 2.57788 0.97475 0.83575C0.727125 1.26538 0.581875 1.75713 0.581875 2.2865C0.581875 3.2805 1.09375 4.16162 1.85675 4.67175C1.39562 4.663 0.94325 4.52913 0.56 4.31825C0.56 4.327 0.56 4.33838 0.56 4.34975C0.56 5.7445 1.55487 6.903 2.8595 7.16988C2.62587 7.23375 2.37125 7.26437 2.107 7.26437C1.92325 7.26437 1.73775 7.25387 1.56362 7.21537C1.9355 8.352 2.99075 9.18762 4.2455 9.21475C3.269 9.97863 2.02912 10.4389 0.686875 10.4389C0.4515 10.4389 0.22575 10.4284 0 10.3995C1.27137 11.2194 2.77813 11.6875 4.403 11.6875C9.6845 11.6875 12.572 7.3125 12.572 3.52025C12.572 3.39337 12.5676 3.27087 12.5615 3.14925C13.1311 2.745 13.6097 2.24013 14 1.65913Z" fill="white"/>
+                                </svg>
+                            </div>
+                            <div class="footer__left-icon">
+                                <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M11.6308 0H2.36923C1.74087 0 1.13825 0.257539 0.693931 0.715961C0.249615 1.17438 0 1.79614 0 2.44444V7.55556C0 8.20386 0.249615 8.82562 0.693931 9.28404C1.13825 9.74246 1.74087 10 2.36923 10H11.6308C12.2591 10 12.8618 9.74246 13.3061 9.28404C13.7504 8.82562 14 8.20386 14 7.55556V2.44444C14 1.79614 13.7504 1.17438 13.3061 0.715961C12.8618 0.257539 12.2591 0 11.6308 0ZM9.74185 5.09778L5.54185 7.32C5.52549 7.32874 5.50724 7.33301 5.48884 7.3324C5.47043 7.33179 5.45248 7.32631 5.43671 7.31651C5.42094 7.3067 5.40787 7.29288 5.39875 7.27637C5.38963 7.25987 5.38476 7.24122 5.38462 7.22222V2.77778C5.38476 2.75878 5.38963 2.74013 5.39875 2.72363C5.40787 2.70712 5.42094 2.6933 5.43671 2.68349C5.45248 2.67369 5.47043 2.66821 5.48884 2.6676C5.50724 2.66699 5.52549 2.67126 5.54185 2.68L9.74185 4.90222C9.75949 4.91155 9.77429 4.92571 9.78463 4.94316C9.79496 4.96061 9.80044 4.98066 9.80044 5.00111C9.80044 5.02156 9.79496 5.04161 9.78463 5.05906C9.77429 5.07651 9.75949 5.09068 9.74185 5.1V5.09778Z" fill="white"/>
+                                </svg>                                    
+                            </div>
+                            <div class="footer__left-icon">
+                                <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M11.995 12.3687V12.3681H11.998V7.83192C11.998 5.61277 11.5346 3.90332 9.01804 3.90332C7.80824 3.90332 6.99638 4.58772 6.66493 5.23656H6.62994V4.1105H4.24384V12.3681H6.72842V8.27926C6.72842 7.20267 6.92639 6.16164 8.21967 6.16164C9.49396 6.16164 9.51296 7.39026 9.51296 8.34832V12.3687H11.995Z" fill="white"/>
+                                    <path d="M0.198608 4.11133H2.68619V12.3687H0.198608V4.11133Z" fill="white"/>
+                                    <path d="M1.44077 0C0.645395 0 0 0.665422 0 1.48547C0 2.30552 0.645395 2.98486 1.44077 2.98486C2.23614 2.98486 2.88153 2.30552 2.88153 1.48547C2.88103 0.665422 2.23564 0 1.44077 0V0Z" fill="white"/>
+                                </svg>                                    
+                            </div>
+                        </div>      
+                    </div>
+                    <div class="footer__right">
+                        <div class="footer__right-section">
+                            <h3 class="footer__right-title">About</h3>
+                            <ul class="footer__right-menu">
+                                <li class="footer__right-menu-item">Company</li>
+                                <li class="footer__right-menu-item">Team</li>
+                                <li class="footer__right-menu-item">Career</li>
+                                <li class="footer__right-menu-item">Blogs</li>
+                            </ul>
+                        </div>
+                        <div class="footer__right-section">
+                            <h3 class="footer__right-title">Products</h3>
+                            <ul class="footer__right-menu">
+                                <li class="footer__right-menu-item">E-Books</li>
+                                <li class="footer__right-menu-item">Preasantation</li>
+                                <li class="footer__right-menu-item">Management</li>
+                                <li class="footer__right-menu-item">Dashboard</li>
+                            </ul>
+                        </div>
+                        <div class="footer__right-section">
+                            <h3 class="footer__right-title">Address</h3>
+                            <ul class="footer__right-menu">
+                                <li class="footer__right-menu-item">Country Delevery</li>
+                                <li class="footer__right-menu-item">Counter Beach Post</li>
+                                <li class="footer__right-menu-item">www.itobd.com</li>
+                                <li class="footer__right-menu-item">+880176565655</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+     </footer>
+
+    <div class="cover"></div>
+    <script src="scripts/swiper-bundle.min.js"></script>
+    <script src="scripts/app.js"></script>
+    
+</body>
+</html>
